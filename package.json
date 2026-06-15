@@ -1,0 +1,38 @@
+{
+  "name": "enterprise-ai-gtm-skill",
+  "version": "1.0.0",
+  "description": "Complete GTM + marketing system skill for B2B SaaS products. Generate professional whitepapers, one-pagers, LinkedIn campaigns, and execution guides.",
+  "type": "module",
+  "keywords": [
+    "gtm",
+    "marketing",
+    "b2b-saas",
+    "thought-leadership",
+    "linkedin",
+    "campaign",
+    "ai",
+    "skill"
+  ],
+  "author": "Enterprise AI Team",
+  "license": "MIT",
+  "scripts": {
+    "help": "cat README.md",
+    "getting-started": "cat docs/GETTING_STARTED.md",
+    "customize": "cat docs/CUSTOMIZATION_GUIDE.md",
+    "example": "open examples/Enterprise-AI-Foundry/README.md || cat examples/Enterprise-AI-Foundry/README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/enterprise-ai-gtm-skill"
+  },
+  "main": "README.md",
+  "files": [
+    "README.md",
+    "SKILL.md",
+    "templates/",
+    "examples/",
+    "docs/",
+    "scripts/",
+    ".gitignore"
+  ]
+}
