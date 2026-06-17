@@ -1,0 +1,25 @@
+{
+  "name": "gtm-video-factory",
+  "version": "1.0.0",
+  "description": "Remotion-based video generator for Enterprise AI Foundry GTM content",
+  "type": "module",
+  "scripts": {
+    "start": "remotion studio",
+    "render:linkedin": "remotion render src/Root.tsx LinkedInPost --props='{\"topic\":\"Enterprise AI Foundry\",\"duration\":30}'",
+    "render:youtube": "remotion render src/Root.tsx YouTubeIntro --props='{\"topic\":\"Enterprise AI Foundry\",\"duration\":60}'",
+    "render:all": "npm run render:linkedin && npm run render:youtube",
+    "benchmark": "remotion benchmark src/Root.tsx LinkedInPost",
+    "lambda-create": "remotion lambda sites create && remotion lambda function create",
+    "lambda-deploy": "remotion lambda sites create --site-name gtm-factory"
+  },
+  "dependencies": {
+    "remotion": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.0.0"
+  }
+}

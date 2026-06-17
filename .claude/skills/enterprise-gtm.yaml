@@ -1,0 +1,401 @@
+---
+# Enterprise AI GTM Skill Definition
+# Available in Claude Code skills menu as: /enterprise-gtm
+
+name: Enterprise AI GTM Skill
+slug: enterprise-gtm
+version: "1.0"
+author: Rahul Vadera
+description: |
+  A comprehensive, framework-driven go-to-market skill that works for ANY enterprise
+  product. Automatically selects positioning framework, runs 6-week workshop, generates
+  23 strategic artifacts, and creates content/lead gen/sales plans customized by buyer
+  type and product stage.
+
+tags:
+  - gtm
+  - marketing
+  - positioning
+  - sales
+  - framework
+  - enterprise
+  - strategy
+
+# Skill Category (how it appears in Claude Code skills menu)
+category: Business Strategy & GTM
+
+# Invocation format
+invocation:
+  command: /enterprise-gtm
+  syntax: |
+    /enterprise-gtm [product-info]
+
+  examples:
+    - "/enterprise-gtm Ask-AI Service, Enterprise AI Service, Growth, Sr. IT Executive"
+    - "/enterprise-gtm Risk Scoring Platform, Enterprise AI Service, MVP, Chief Risk Officer"
+    - "/enterprise-gtm eCourt, Government SaaS, Pre-launch, Government CIO"
+
+# Input Parameters
+input:
+  type: object
+  required:
+    - product_name
+    - product_type
+    - product_stage
+    - target_buyer
+  optional:
+    - problem_statement
+    - key_differentiator
+    - proof_points
+    - target_market
+    - company_size
+    - customer_industry
+  fields:
+    product_name:
+      type: string
+      description: "Name of your product (e.g., Ask-AI Service)"
+      example: "Ask-AI Service"
+
+    product_type:
+      type: enum
+      description: "Category of your product"
+      options:
+        - "DevTools/Infrastructure"
+        - "B2B Application SaaS"
+        - "Platform/Marketplace"
+        - "Enterprise AI Service"
+        - "Government SaaS"
+      example: "Enterprise AI Service"
+
+    product_stage:
+      type: enum
+      description: "Current lifecycle stage"
+      options:
+        - "Pre-launch"
+        - "Growth"
+        - "Mature"
+      example: "Growth"
+
+    target_buyer:
+      type: string
+      description: "Primary buyer role and context"
+      example: "Sr. IT Executive (CTO, VP Engineering, Chief Architect)"
+
+    problem_statement:
+      type: string
+      description: "What problem does your product solve?"
+      example: "Knowledge fragmentation across 5+ enterprise systems wastes 2-4 hours/day per employee"
+
+    key_differentiator:
+      type: string
+      description: "What makes your product different?"
+      example: "Conversational cross-system search, integrated in 28 days, no system replacement required"
+
+    proof_points:
+      type: array
+      description: "Existing customers, metrics, or deployments"
+      example:
+        - "IACP: 95% deficiency reduction, 15-day integration"
+        - "CBP: 20-40x faster detection, 3-week integration"
+        - "Enterprise: 92% accuracy, 28-day deployment"
+
+    target_market:
+      type: string
+      description: "Geographic or vertical focus"
+      example: "Federal + Commercial, Mid-to-large enterprises"
+
+# Output / Deliverables
+output:
+  type: object
+  fields:
+    framework_selection:
+      description: "Primary framework + secondary framework recommendation"
+      format: "structured document"
+
+    positioning_brief:
+      description: "1-page positioning statement, differentiation, value props"
+      format: "markdown document"
+
+    content_strategy:
+      description: "3-month content calendar + topic ideas + lead magnet"
+      format: "markdown document"
+
+    lead_generation_plan:
+      description: "5-stage funnel + messaging + tactics + metrics"
+      format: "markdown document"
+
+    sales_framework:
+      description: "Conversation scripts by buyer type + objection handling"
+      format: "markdown document"
+
+    gtm_plan_summary:
+      description: "6-week positioning roadmap + 90-day execution plan"
+      format: "markdown document"
+
+    artifacts_checklist:
+      description: "23 strategic artifacts model (positioning, personas, messaging, strategy)"
+      format: "checklist"
+
+# Process & Timeline
+process:
+  phase_1:
+    name: Framework Selection
+    duration: "5 minutes"
+    output: Framework recommendation + rationale
+    description: "Automated framework selection based on product type × stage"
+
+  phase_2:
+    name: Positioning Workshop
+    duration: "6 weeks (guided)"
+    output: "23 strategic artifacts"
+    description: |
+      9 discovery exercises:
+      - Future State Headlines
+      - Problem Definition
+      - Customer Personas
+      - Competitive Analysis
+      - Differentiation Statement
+      - Value Proposition Mapping
+      - Messaging Hierarchy
+      - Brand Archetype
+      - Brand Promise
+
+  phase_3:
+    name: Content Strategy
+    duration: "1-2 weeks (guided)"
+    output: "3-month content calendar + topic ideas"
+    description: "Thought leadership strategy customized by buyer type"
+
+  phase_4:
+    name: Lead Generation Plan
+    duration: "1-2 weeks (guided)"
+    output: "5-stage funnel + metrics"
+    description: "Lead generation motion customized by product stage"
+
+  phase_5:
+    name: Sales Framework
+    duration: "1 week (guided)"
+    output: "Sales scripts + objection handling"
+    description: "Sales conversation framework customized by buyer psychology"
+
+# Frameworks Included
+frameworks:
+  - name: "JTBD (Jobs to Be Done)"
+    use_for: "Understanding customer motivation and job execution"
+
+  - name: "April Dunford Canvas"
+    use_for: "DevTools and infrastructure products at growth stage"
+
+  - name: "Geoffrey Moore Template"
+    use_for: "Enterprise SaaS and AI services at growth stage"
+
+  - name: "Value Proposition Canvas"
+    use_for: "B2B SaaS and pre-launch products"
+
+  - name: "Category Design / Blue Ocean"
+    use_for: "Mature products and emerging categories"
+
+  - name: "Lean Canvas"
+    use_for: "Pre-launch and early-stage products"
+
+# Real Examples Included
+examples:
+  - name: "Ask-AI Service"
+    product_type: "Enterprise AI Service"
+    stage: "Growth"
+    framework: "Geoffrey Moore + STP"
+    description: "Conversational knowledge platform for enterprises"
+
+  - name: "Risk Scoring Platform"
+    product_type: "Enterprise AI Service"
+    stage: "MVP"
+    framework: "Lean Canvas + JTBD + Value Prop"
+    description: "AI-powered fraud detection and risk scoring"
+
+  - name: "eCourt"
+    product_type: "Government SaaS"
+    stage: "Pre-launch"
+    framework: "Lean Canvas + Government Psychology"
+    description: "Modern, accessible case management for courts"
+
+# Key Features
+features:
+  - "Automated framework selection (5 product types × 3 stages = 15 configurations)"
+  - "6-week positioning workshop (same process for all products)"
+  - "23 strategic artifacts model (positioning, personas, messaging, strategy)"
+  - "Buyer-type customization (CTO, CFO, Business Leader, User)"
+  - "Stage-based lead gen (Pre-launch, Growth, Mature)"
+  - "Buyer psychology sales scripts (Technical, Financial, Business, Executive)"
+  - "Content strategy by buyer type (not by product)"
+  - "Real product examples (Ask-AI, Risk Scoring, eCourt)"
+  - "Framework selection rationale (why this framework)"
+  - "Integration with proven methodologies (Moore, Dunford, JTBD, etc.)"
+
+# Workflow Integration
+workflows:
+  quick_framework_selection:
+    name: "Quick Framework Selection"
+    duration: "5 minutes"
+    steps:
+      - "Provide product type + stage"
+      - "Get framework recommendation + rationale"
+    use_when: "You need to know which framework to use"
+
+  full_positioning:
+    name: "Full 6-Week Positioning"
+    duration: "6 weeks (guided)"
+    steps:
+      - "Run 9 discovery exercises"
+      - "Apply selected framework"
+      - "Validate with customer interviews"
+      - "Create 23 strategic artifacts"
+    use_when: "You need complete positioning foundation"
+
+  content_strategy_only:
+    name: "Content Strategy"
+    duration: "1-2 weeks"
+    steps:
+      - "Use existing positioning"
+      - "Build 3-month content calendar"
+      - "Create topic ideas by buyer type"
+      - "Design lead magnet"
+    use_when: "You have positioning, need content plan"
+
+  lead_gen_plan_only:
+    name: "Lead Generation Plan"
+    duration: "1-2 weeks"
+    steps:
+      - "Map 5-stage funnel"
+      - "Create messaging for each stage"
+      - "Define tactics + metrics"
+      - "Plan 30-day launch"
+    use_when: "You have positioning, need lead gen plan"
+
+  sales_framework_only:
+    name: "Sales Framework"
+    duration: "1 week"
+    steps:
+      - "Build conversation scripts by buyer type"
+      - "Create objection handling guide"
+      - "Design closing strategy"
+      - "Plan sales training"
+    use_when: "You have positioning, need sales scripts"
+
+# Success Metrics
+metrics:
+  phase_1:
+    metric: "Framework selected correctly"
+    measurement: "Customer validation that framework matches product"
+
+  phase_2:
+    metric: "Positioning clarity"
+    measurement: "Target buyer understands positioning in <30 seconds"
+
+  phase_3:
+    metric: "Content execution"
+    measurement: "Marketing team can execute calendar immediately"
+
+  phase_4:
+    metric: "Lead generation"
+    measurement: "Expected lead volume matches real results"
+
+  phase_5:
+    metric: "Sales effectiveness"
+    measurement: "Sales team comfort + consistency + closing rate"
+
+# Documentation & Resources
+resources:
+  - title: "Generic GTM Skill Definition"
+    path: "/GENERIC-GTM-SKILL-DEFINITION.md"
+    description: "Complete skill architecture and overview"
+
+  - title: "Framework Selection Matrix"
+    path: "/frameworks/FRAMEWORK-SELECTION-MATRIX.md"
+    description: "Decision engine for framework selection"
+
+  - title: "Generic Positioning Process"
+    path: "/frameworks/GENERIC-POSITIONING-PROCESS.md"
+    description: "6-week workshop guide (works for any product)"
+
+  - title: "Content, Lead Gen, Sales"
+    path: "/frameworks/GENERIC-CONTENT-LEADGEN-SALES.md"
+    description: "Complete execution guide with real examples"
+
+  - title: "Skill Manifest"
+    path: "/SKILL-MANIFEST.md"
+    description: "Comprehensive skill documentation"
+
+# Use Cases
+use_cases:
+  - "Need to position a new product → Run skill"
+  - "Want to know which framework to use → Quick framework selection"
+  - "Need full GTM system → Run 6-week positioning workshop"
+  - "Have positioning, need content → Content strategy workflow"
+  - "Have positioning, need lead gen → Lead gen planning workflow"
+  - "Have positioning, need sales scripts → Sales framework workflow"
+  - "Applying to multiple products → Run skill for each"
+  - "Expanding to new market → Use stage migration guidance"
+
+# Limitations
+limitations:
+  - "Guides process (you execute interviews, writing, outreach)"
+  - "Recommends framework (you apply it)"
+  - "Creates content outlines (you write content)"
+  - "Suggests tactics (you execute tactics)"
+  - "Provides scripts (sales team closes deals)"
+  - "Shows metrics (you track and measure)"
+
+# Status
+status: "Production Ready"
+release_date: "2026-06-16"
+last_updated: "2026-06-16"
+
+# Compatibility
+compatible_with:
+  - "Claude Code CLI"
+  - "Claude Code Desktop"
+  - "Claude Code Web"
+  - "Claude Code IDE Extensions"
+
+# Author & Support
+author: "Rahul Vadera"
+support_email: "ravjdpr@gmail.com"
+repository: "enterprise-ai-gtm-skill"
+
+# Versioning
+versioning:
+  current: "1.0"
+  changelog:
+    - version: "1.0"
+      date: "2026-06-16"
+      changes:
+        - "Initial release"
+        - "Framework selection matrix"
+        - "Generic 6-week positioning process"
+        - "Content, lead gen, sales frameworks"
+        - "Real examples (Ask-AI, Risk Scoring, eCourt)"
+
+# Intellectual Property
+ip_notes: |
+  This skill is based on proven positioning methodologies:
+  - JTBD (Clayton Christensen)
+  - April Dunford Positioning Canvas
+  - Geoffrey Moore (Crossing the Chasm)
+  - Value Proposition Canvas (Alexander Osterwalder)
+  - Category Design (Al Ries, Mike Moyer)
+  - Blue Ocean Strategy (W. Chan Kim, Renée Mauborgne)
+
+  Application to ANY product type is original intellectual property.
+
+# License & Sharing
+license: "Proprietary"
+can_be_licensed: true
+can_be_shared: false
+
+# Next Steps
+next_steps:
+  - "Run /enterprise-gtm with your product information"
+  - "Review framework selection recommendation"
+  - "Read GENERIC-POSITIONING-PROCESS.md"
+  - "Execute 6-week workshop"
+  - "Apply content + lead gen + sales plans"

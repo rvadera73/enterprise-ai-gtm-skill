@@ -1,0 +1,132 @@
+{
+  "version": "1.0.0",
+  "name": "Enterprise AI GTM Skill",
+  "slug": "enterprise-ai-gtm-skill",
+  "description": "Framework-driven go-to-market system for ANY enterprise product",
+  "author": {
+    "name": "Rahul Vadera",
+    "email": "ravjdpr@gmail.com"
+  },
+  "license": "Proprietary",
+  "skills": {
+    "enterprise-gtm": {
+      "enabled": true,
+      "name": "Enterprise AI GTM Skill",
+      "slug": "enterprise-gtm",
+      "command": "/enterprise-gtm",
+      "version": "1.0.0",
+      "status": "Production Ready",
+      "category": "Business Strategy & GTM",
+      "description": "Framework-driven go-to-market system that works for ANY enterprise product. Automatically selects positioning framework, runs 6-week workshop, generates 23 strategic artifacts, creates content/lead gen/sales plans customized by buyer type and product stage.",
+      "invocation": {
+        "command": "/enterprise-gtm",
+        "syntax": "/enterprise-gtm [product-info]",
+        "examples": [
+          "/enterprise-gtm Ask-AI Service, Enterprise AI Service, Growth, Sr. IT Executive",
+          "/enterprise-gtm Risk Scoring, Enterprise AI Service, MVP, Chief Risk Officer",
+          "/enterprise-gtm eCourt, Government SaaS, Pre-launch, Government CIO"
+        ]
+      },
+      "documentation": {
+        "overview": "GETTING-STARTED.md",
+        "definition": ".claude/skills/enterprise-gtm.yaml",
+        "manifest": "SKILL-MANIFEST.md",
+        "architecture": "GENERIC-GTM-SKILL-DEFINITION.md",
+        "guides": [
+          "frameworks/FRAMEWORK-SELECTION-MATRIX.md",
+          "frameworks/GENERIC-POSITIONING-PROCESS.md",
+          "frameworks/GENERIC-CONTENT-LEADGEN-SALES.md"
+        ]
+      },
+      "tags": [
+        "gtm",
+        "marketing",
+        "positioning",
+        "sales",
+        "framework",
+        "enterprise",
+        "strategy",
+        "b2b"
+      ],
+      "features": [
+        "Automated framework selection (15 configurations)",
+        "6-week positioning workshop",
+        "23 strategic artifacts model",
+        "Buyer-type customization",
+        "Stage-based lead generation",
+        "Sales conversation frameworks"
+      ],
+      "examples": {
+        "ask-ai": {
+          "name": "Ask-AI Service",
+          "type": "Enterprise AI Service",
+          "stage": "Growth",
+          "framework": "Geoffrey Moore + STP"
+        },
+        "risk-scoring": {
+          "name": "Risk Scoring Platform",
+          "type": "Enterprise AI Service",
+          "stage": "MVP",
+          "framework": "Lean Canvas + JTBD"
+        },
+        "ecourt": {
+          "name": "eCourt",
+          "type": "Government SaaS",
+          "stage": "Pre-launch",
+          "framework": "Lean Canvas + Gov Psychology"
+        }
+      }
+    }
+  },
+  "frameworks": {
+    "jtbd": {
+      "name": "Jobs to Be Done",
+      "description": "Understanding customer motivation and job execution",
+      "use_for": ["B2B SaaS", "All product types"]
+    },
+    "dunford": {
+      "name": "April Dunford Canvas",
+      "description": "Competing on differentiation",
+      "use_for": ["DevTools", "Infrastructure"]
+    },
+    "moore": {
+      "name": "Geoffrey Moore Template",
+      "description": "Multi-stakeholder enterprise buying",
+      "use_for": ["Enterprise SaaS", "Enterprise AI Services"]
+    },
+    "value_prop": {
+      "name": "Value Proposition Canvas",
+      "description": "Understanding customer pains and gains",
+      "use_for": ["B2B SaaS", "Pre-launch products"]
+    },
+    "category_design": {
+      "name": "Category Design / Blue Ocean",
+      "description": "Defining or redefining a category",
+      "use_for": ["Mature products", "Emerging categories"]
+    },
+    "lean_canvas": {
+      "name": "Lean Canvas",
+      "description": "Early-stage problem validation",
+      "use_for": ["Pre-launch", "MVP products"]
+    }
+  },
+  "product_types": {
+    "devtools": "DevTools/Infrastructure (Stripe, Vercel, Linear, Supabase)",
+    "saas": "B2B Application SaaS (Salesforce, HubSpot, Notion)",
+    "platform": "Platform/Marketplace (Shopify, Twilio, Zapier)",
+    "enterprise_ai": "Enterprise AI Service (Ask-AI, Risk Scoring, Document Intelligence)",
+    "government": "Government SaaS (eCourt, IACP, Case Management)"
+  },
+  "product_stages": {
+    "pre_launch": "Pre-launch (MVP, validating problem)",
+    "growth": "Growth (product-market fit, scaling)",
+    "mature": "Mature (market leader, defending position)"
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "status": "Production Ready",
+    "created": "2026-06-16",
+    "last_updated": "2026-06-17",
+    "release_date": "2026-06-16"
+  }
+}

@@ -1,361 +1,234 @@
-# Enterprise AI GTM + Marketing Skill
+# Enterprise AI GTM Skill
 
-**Reusable go-to-market and marketing system for deploying publication-quality marketing materials and driving customer acquisition for B2B SaaS products.**
+**Complete go-to-market system for Ask-AI Service and Enterprise AI Foundry.**
 
----
-
-## What This Skill Does
-
-Generates a complete, production-ready marketing and go-to-market system for any enterprise AI product, including:
-
-- **Professional whitepaper** (4-page thought leadership, HTML/CSS)
-- **One-pager visual summary** (PDF-ready)
-- **2-week LinkedIn campaign** (14 daily posts, copy-paste ready)
-- **Operational guides** (how to execute, track, measure)
-- **Strategy documentation** (positioning, messaging, targeting)
-
-**Output quality:** Media/marketing house standard (not DIY or rudimentary)
+Positioning frameworks, thought leadership content, lead generation strategy, and automation tools—everything you need to market and close deals.
 
 ---
 
-## Use Cases
+## What This Skill Includes
 
-✓ **Enterprise AI products** (Ask-AI, Risk Scoring, MLOps, Document Intelligence, Fraud Detection)
-✓ **B2B SaaS launches** (Any enterprise software)
-✓ **Federal/Government products** (Compliance, security, audit-focused messaging)
-✓ **Product expansion** (New product line GTM)
-✓ **Thought leadership campaigns** (Position founder/company as expert)
+- ✅ **Positioning Frameworks** — Clear messaging for Ask-AI and Enterprise AI Foundry
+- ✅ **Authentic Messaging Profile** — Your actual voice from LinkedIn posts  
+- ✅ **Mental Models Framework** — How Sr. IT Executives think and how to shift them
+- ✅ **High-Quality Content** — Example thought leadership posts (ready to use)
+- ✅ **Lead Generation Strategy** — Complete 5-stage funnel
+- ✅ **Sales Conversation Framework** — Scripts and objection handling
+- ✅ **Automation Tools** — Content analysis, conversation building, lead generation
+- ✅ **Example Materials** — Case studies, business cases, ROI calculators
+- ✅ **Documentation** — How-to guides for all aspects of GTM
 
----
-
-## What You Get
-
-### Core Assets (Auto-Generated)
-
-1. **Whitepaper.html** — 4-page professional thought leadership
-   - Modern SaaS design (Tailwind CSS)
-   - Embedded data visualizations
-   - Print-to-PDF ready
-   - Responsive (desktop/mobile/tablet)
-
-2. **OnePager.html** — Visual one-page summary
-   - Problem | Solution | Impact format
-   - Print-ready (8.5"x11")
-   - LinkedIn share-ready
-
-3. **LinkedIn-Campaign-2Week.md** — Complete campaign blueprint
-   - 14 daily posts (copy-paste ready)
-   - Engagement strategy per post
-   - Follow-up playbook
-   - Success metrics
-
-4. **Operational Guides** — How to execute
-   - Complete materials guide
-   - Quick-start checklist
-   - Daily execution templates
-   - Tracking spreadsheets
-
-### Strategy Documents (Input-Based)
-
-5. **Business Strategy** — Market, positioning, competitive
-   - TAM/SAM/SOM analysis
-   - Go-to-market motions
-   - Competitive positioning
-   - Financial projections
-
-6. **Product Strategy** — Feature roadmap, positioning
-   - What problem does the product solve
-   - Who's the ideal customer
-   - What's different/unique
-   - How does it scale
+**Quality:** Enterprise-grade positioning and strategy, not templates
 
 ---
 
-## How to Use This Skill
+## 🎯 Start Here
 
-### Option 1: Generate for a Specific Product
+**Your first 30 minutes**:
 
+1. Read `/positioning/POSITIONING-FRAMEWORK.md` (the master document)
+2. Read `/positioning/AUTHENTIC-MESSAGING-PROFILE.md` (your voice)
+3. Read `/content/linkedin/ASK-AI-THOUGHT-LEADERSHIP-1.md` (example post)
+
+**Then**:
+- Post the example on LinkedIn
+- Monitor engagement
+- Create your own posts using the same approach
+- Use lead generation strategy to reach Sr. IT Executives
+
+---
+
+## 📂 Folder Structure
+
+```
+positioning/              ← Positioning frameworks (start here)
+content/                  ← Marketing content (LinkedIn, blog, whitepapers)
+strategy/                 ← GTM strategies (lead gen, discovery, journey)
+research/                 ← Research & market analysis
+tools/                    ← Automation scripts and utilities
+examples/                 ← Reference materials and case studies
+documentation/            ← How-to guides and playbooks
+archive/                  ← Old documents (reference only)
+```
+
+### Key Files
+
+**Positioning** (Start here):
+- `positioning/POSITIONING-FRAMEWORK.md` ⭐ — Master positioning (Ask-AI + Foundry)
+- `positioning/AUTHENTIC-MESSAGING-PROFILE.md` — Your voice & themes
+- `positioning/MENTAL-MODELS-POSITIONING.md` — How to shift Sr. IT thinking
+
+**Content**:
+- `content/linkedin/ASK-AI-THOUGHT-LEADERSHIP-1.md` — Ready-to-post example
+- `content/linkedin/README.md` — Content strategy and calendar
+
+**Strategy**:
+- `strategy/LEAD-GENERATION-STRATEGY.md` — 5-stage lead funnel
+- `strategy/STRATEGIC-DISCOVERY-BRIEF.md` — Market research
+
+**Tools**:
+- `tools/content-generation/content_analyzer.py` — Analyze your messaging
+- `tools/lead-gen/prospect_conversation_builder.py` — Build sales frameworks
+
+---
+
+## 🚀 How to Use
+
+### For GTM Strategy
+1. Read `/positioning/POSITIONING-FRAMEWORK.md`
+2. Read `/strategy/LEAD-GENERATION-STRATEGY.md`
+3. Follow `/documentation/GETTING-STARTED.md` (when created)
+
+### For Content Creation
+1. Read `/positioning/AUTHENTIC-MESSAGING-PROFILE.md` (your voice)
+2. Study `/content/linkedin/ASK-AI-THOUGHT-LEADERSHIP-1.md` (example)
+3. Follow `/documentation/CONTENT-CREATION-GUIDE.md` (when created)
+
+### For Closing Deals
+1. Read `/positioning/MENTAL-MODELS-POSITIONING.md`
+2. Use `/documentation/SALES-CONVERSATION-GUIDE.md` (when created)
+3. Reference `/examples/` for proof and case studies
+
+### For Lead Generation
+1. Execute `/strategy/LEAD-GENERATION-STRATEGY.md`
+2. Use `/tools/lead-gen/prospect_conversation_builder.py`
+3. Reference `/examples/` for customer journeys
+
+---
+
+## ✅ What's Ready Now
+
+✅ **Positioning Framework** (Complete)
+- Master positioning document
+- Authentic messaging profile
+- Mental models framework
+
+✅ **Content Examples** (Ready to use)
+- Ask-AI thought leadership post
+- Can be posted immediately to LinkedIn
+
+✅ **Strategy** (Complete)
+- 5-stage lead generation funnel
+- Strategic discovery brief
+
+✅ **Tools** (Functional)
+- Content analysis scripts
+- Conversation building tools
+
+✅ **Organization** (Done)
+- Clean folder structure
+- Navigation READMEs in each folder
+- Master README (this file)
+
+🔄 **In Progress**
+- Documentation guides (GETTING-STARTED, CONTENT-CREATION, SALES-CONVERSATION)
+- Additional thought leadership posts
+- Example case studies
+- Marketing automation tools (lower priority)
+
+---
+
+## 📈 Success Metrics
+
+**Week 1**: Post first LinkedIn thought leadership
+**Week 2**: Create lead magnet (decision framework)
+**Week 3**: Launch webinar
+**Week 4**: Start direct outreach
+**Week 5+**: Book 30-day proof calls
+
+**Month 1 Goals**:
+- LinkedIn engagement on thought leadership
+- Lead magnet downloads
+- Qualified prospect conversations
+
+**Month 3 Goals**:
+- First Ask-AI pilot or proof
+- Visibility with Sr. IT Executives
+- Pipeline for Enterprise AI Foundry expansion
+
+---
+
+## 📖 Navigation
+
+Each folder has a README explaining what's inside and how to use it:
+
+- `/positioning/README.md` — Positioning frameworks overview
+- `/content/README.md` — Content guidelines
+- `/strategy/README.md` — GTM strategy overview
+- `/research/README.md` — Research materials
+- `/tools/README.md` — Available tools
+- `/examples/README.md` — Reference materials
+- `/documentation/README.md` — How-to guides
+- `/archive/README.md` — Old documents (reference only)
+
+---
+
+## 🎯 By Role
+
+### GTM/Marketing Lead
+1. `/positioning/POSITIONING-FRAMEWORK.md` (what to say)
+2. `/strategy/LEAD-GENERATION-STRATEGY.md` (how to reach people)
+3. `/content/linkedin/` (example content)
+
+### Content Creator
+1. `/positioning/AUTHENTIC-MESSAGING-PROFILE.md` (your voice)
+2. `/content/linkedin/ASK-AI-THOUGHT-LEADERSHIP-1.md` (example)
+3. `/documentation/CONTENT-CREATION-GUIDE.md` (when created)
+
+### Sales/Business Development
+1. `/positioning/POSITIONING-FRAMEWORK.md` (talking points)
+2. `/positioning/MENTAL-MODELS-POSITIONING.md` (sales psychology)
+3. `/examples/` (proof points)
+
+---
+
+## ⚡ Quick Commands
+
+**Analyze your messaging**:
 ```bash
-claude-code generate-gtm-campaign \
-  --product "Enterprise Ask-AI Service" \
-  --problem "Enterprises rebuild AI systems repeatedly" \
-  --solution "Reusable AI infrastructure platform" \
-  --target-persona "Federal CIO" \
-  --output-dir "./marketing-assets"
+cd tools/content-generation
+python content_analyzer.py --interactive
 ```
 
-### Option 2: Use Templates Directly
-
-1. Copy `templates/` directory
-2. Fill in your product-specific details
-3. Run HTML generators
-4. Customize copy (optional)
-5. Export to PDF
-
-### Option 3: Adapt the Case Study
-
-1. Read `examples/Enterprise-AI-Foundry/`
-2. Copy the structure
-3. Substitute your product details
-4. Use the playbook as-is
-
----
-
-## Directory Structure
-
-```
-enterprise-ai-gtm-skill/
-├── README.md                          # This file
-├── SKILL.md                           # Skill definition (how Claude Code uses it)
-│
-├── templates/                         # Reusable templates
-│   ├── whitepaper-template.html      # Whitepaper structure
-│   ├── onepager-template.html        # One-pager structure
-│   ├── linkedin-campaign-template.md # Campaign post structure
-│   ├── strategy-template.md          # Business strategy framework
-│   └── execution-guide-template.md   # How-to guide structure
-│
-├── examples/                          # Complete working examples
-│   └── Enterprise-AI-Foundry/
-│       ├── whitepaper.html
-│       ├── onepager.html
-│       ├── linkedin-campaign.md
-│       ├── business-strategy.md
-│       ├── marketing-guide.md
-│       ├── quick-start.md
-│       └── README.md
-│
-├── scripts/                           # Generation scripts
-│   ├── generate-whitepaper.js        # HTML whitepaper generator
-│   ├── generate-onepager.js          # HTML one-pager generator
-│   ├── generate-campaign.js          # LinkedIn campaign generator
-│   └── generate-all.js               # Generate everything
-│
-├── docs/                              # Documentation
-│   ├── GETTING_STARTED.md            # Quick start guide
-│   ├── CUSTOMIZATION_GUIDE.md        # How to adapt materials
-│   ├── EXECUTION_PLAYBOOK.md         # How to run the campaign
-│   ├── SUCCESS_METRICS.md            # What success looks like
-│   └── TROUBLESHOOTING.md            # Common issues + fixes
-│
-└── package.json                       # Node.js dependencies (if using scripts)
-```
-
----
-
-## Quick Start
-
-### For Your First Campaign (Enterprise AI Foundry)
-
+**Build conversation frameworks**:
 ```bash
-# The example is already built and ready
-cd examples/Enterprise-AI-Foundry/
-
-# Files are ready to use:
-# - whitepaper.html (open in browser, print to PDF)
-# - onepager.html (open in browser, print to PDF)
-# - linkedin-campaign.md (copy posts daily)
-# - quick-start.md (follow the checklist)
-```
-
-### For Your Next Product
-
-```bash
-# Copy templates to new directory
-mkdir products/Risk-Scoring-GTM
-cp templates/* products/Risk-Scoring-GTM/
-
-# Fill in your product details in each template
-# (See CUSTOMIZATION_GUIDE.md for instructions)
-
-# Generate HTML assets
-node scripts/generate-whitepaper.js \
-  --product "Risk Scoring" \
-  --output "products/Risk-Scoring-GTM/whitepaper.html"
+cd tools/lead-gen
+python prospect_conversation_builder.py
 ```
 
 ---
 
-## What Makes This Different
+## 📊 What's Complete
 
-### 1. **Production Quality**
-Not DIY templates. Professional SaaS-grade design, Tailwind CSS, modern aesthetics.
+✅ Core positioning (Ask-AI + Enterprise AI Foundry)
+✅ Authentic messaging profile
+✅ Mental models framework
+✅ Example thought leadership post
+✅ Lead generation strategy
+✅ Folder organization with navigation
+✅ Sales conversation framework
 
-### 2. **Integrated System**
-All pieces work together. Not isolated documents. Posts → Engagement → Whitepaper → Calls → Customers.
-
-### 3. **Operationalized**
-Not just strategy. Includes daily checklists, tracking spreadsheets, engagement playbooks, success metrics.
-
-### 4. **Repeatable**
-First campaign takes 2 weeks to execute. Second campaign takes 1 week (you know the pattern). Scales to multiple products simultaneously.
-
-### 5. **Cost-Effective**
-Zero external costs. No design tools, no subscriptions, no designer hiring. Just your time.
-
----
-
-## Success Metrics
-
-### Week 1
-- 50-100 new followers
-- 30-50 comments
-- 1-2 inbound messages
-
-### Week 2
-- 250-400+ new followers
-- 100+ comments
-- 5-10 inbound messages
-- 2-3 discovery calls booked
-
-### Month 1
-- 400-600 followers
-- 200+ comments
-- 20-30 whitepaper downloads
-- 5-10 meaningful conversations
-
-### Month 3
-- 1000+ followers
-- First customer signed or pilot launched
-- $5-10M pipeline
+🔄 In Development
+- Documentation guides
+- Enterprise AI Foundry posts
+- Example case studies
+- Marketing automation
 
 ---
 
-## Example: Enterprise AI Foundry
+## 🔗 Related Projects
 
-This skill was tested and validated with the Enterprise AI Foundry product.
-
-**Results (expected by day 90):**
-- 1000+ LinkedIn followers
-- 200+ engaged comments
-- 30+ whitepaper downloads
-- 5-10 inbound conversations
-- 2-3 pilots/partnerships
-- 1 production customer
-
-**Files:** See `examples/Enterprise-AI-Foundry/`
+- **Ask-AI Service**: `/home/rahulvadera/ask-ai-service`
+- **CBP Sentry**: `/home/rahulvadera/cbp-sentry` (example deployment)
+- **IACP-2.1**: `/home/rahulvadera/IACP-2.1` (example deployment)
 
 ---
 
-## For Claude Code Integration
+## ✨ Summary
 
-If you're setting this up as a Claude Code skill:
+This is a **complete, organized GTM system** for Ask-AI Service and Enterprise AI Foundry.
 
-```yaml
-name: enterprise-ai-gtm-skill
-description: Generate complete GTM + marketing systems for B2B SaaS products
-version: 1.0.0
+Start with `/positioning/POSITIONING-FRAMEWORK.md`. Everything else flows from there.
 
-commands:
-  - generate-campaign
-  - generate-whitepaper
-  - generate-onepager
-  - customize-materials
-  - run-playbook
-
-inputs:
-  - product_name (string)
-  - target_problem (string)
-  - solution_brief (string)
-  - target_persona (string)
-  - key_differentiators (array)
-  - business_strategy (optional, file)
-
-outputs:
-  - whitepaper.html
-  - onepager.html
-  - linkedin-campaign.md
-  - execution-guide.md
-  - strategy-analysis.md
-```
-
----
-
-## How to Contribute / Extend
-
-### Add a New Template
-1. Create in `templates/`
-2. Document in `docs/CUSTOMIZATION_GUIDE.md`
-3. Create example in `examples/`
-4. Update README.md
-
-### Add a New Product Example
-1. Create `examples/[Product-Name]/`
-2. Generate all assets using the templates
-3. Add `README.md` explaining customizations
-4. Document lessons learned
-
-### Improve Scripts
-1. Node.js scripts in `scripts/`
-2. Improve HTML/CSS generation
-3. Add personalization features
-4. Document in `docs/`
-
----
-
-## Files Overview
-
-### Core Documentation
-
-- **GETTING_STARTED.md** — Start here (30 min)
-- **EXECUTION_PLAYBOOK.md** — Daily how-to guide (follow for 2 weeks)
-- **CUSTOMIZATION_GUIDE.md** — Adapt for your product (templates + examples)
-- **SUCCESS_METRICS.md** — Know what success looks like
-- **TROUBLESHOOTING.md** — Common issues + solutions
-
-### Example (Enterprise AI Foundry)
-
-- **examples/Enterprise-AI-Foundry/whitepaper.html** — Ready to use/print
-- **examples/Enterprise-AI-Foundry/onepager.html** — Ready to use/print
-- **examples/Enterprise-AI-Foundry/linkedin-campaign.md** — 14 posts, copy-paste
-- **examples/Enterprise-AI-Foundry/marketing-guide.md** — Complete operational guide
-- **examples/Enterprise-AI-Foundry/quick-start.md** — Execute this week checklist
-
-### Templates
-
-- **templates/whitepaper-template.html** — Blank whitepaper (fill in your content)
-- **templates/onepager-template.html** — Blank one-pager
-- **templates/linkedin-campaign-template.md** — Post structure template
-- **templates/strategy-template.md** — Business strategy framework
-
----
-
-## License
-
-[Your License Here]
-
----
-
-## Support
-
-For questions or issues:
-- Check `docs/TROUBLESHOOTING.md`
-- Review `examples/Enterprise-AI-Foundry/` (reference implementation)
-- See `docs/CUSTOMIZATION_GUIDE.md` for adaptation help
-
----
-
-## What's Next
-
-### Phase 1: Validate with Risk Scoring (Q4 2026)
-- Adapt templates for Risk Scoring
-- Execute 2-week campaign
-- Measure results
-- Document learnings
-
-### Phase 2: Productize MLOps (Q1 2027)
-- Reuse playbook for MLOps
-- Continue building content library
-- Scale to 3 simultaneous products
-
-### Phase 3: Offer as Service (Q2 2027)
-- Package as consulting offering
-- Help other organizations with GTM
-- Become known for "AI product launches"
-
----
-
-**Enterprise AI GTM + Marketing Skill**
-**Status:** Ready to use
-**Validation:** Tested with Enterprise AI Foundry
-**Reusability:** Scales to unlimited products
+**Status**: Ready to execute  
+**Last Updated**: June 16, 2026

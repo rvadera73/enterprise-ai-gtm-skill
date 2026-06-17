@@ -1,0 +1,322 @@
+#!/usr/bin/env python3
+"""
+Content Analyzer Tool
+Extracts messaging patterns from LinkedIn posts, articles, and content
+to generate a messaging profile for GTM strategy.
+
+Usage:
+  python content_analyzer.py --input posts.txt --output messaging_profile.md
+
+Input format: Plain text with posts separated by '---'
+"""
+
+import json
+import argparse
+from pathlib import Path
+from typing import Optional
+from anthropic import Anthropic
+
+# Initialize Anthropic client
+client = Anthropic()
+
+def analyze_content_with_claude(content: str, analysis_type: str) -> str:
+    """Use Claude to analyze content for messaging patterns."""
+
+    prompts = {
+        "themes": """Analyze this content and identify the top 3-5 recurring THEMES (not topics, but underlying messages/narratives).
+
+Examples of themes: "speed", "risk reduction", "modernization", "compliance", "empowerment", "efficiency", "innovation", "proof vs. promise".
+
+For each theme, provide:
+1. Theme name
+2. How many times it appears (explicit or implicit)
+3. Example quotes or phrases that show this theme
+4. Why this theme matters for their GTM
+
+Format as a clean list.""",
+
+        "tone": """Analyze this content and describe the TONE & VOICE in detail.
+
+Consider:
+1. Formality level (academic, executive, conversational, technical)
+2. Emotional tone (urgent, thoughtful, confident, cautious, ambitious)
+3. Audience assumption (technical? business? government? other?)
+4. Confidence level (assertive, exploratory, proven, visionary)
+5. Problem framing (crisis? opportunity? evolution? disruption?)
+
+Provide 2-3 direct quotes that best represent the voice.""",
+
+        "value_props": """Extract the VALUE PROPOSITIONS stated or implied in this content.
+
+Don't list features. List what the author is claiming will HAPPEN for the customer:
+1. Business outcomes (speed, cost, compliance, risk reduction, etc.)
+2. User outcomes (easier job, better decisions, visibility, control, etc.)
+3. Institutional outcomes (modernization, competitive advantage, market position, etc.)
+
+For each outcome, note:
+- How it's framed (quantified? aspirational? proven? promised?)
+- Who benefits (which buyer or user?)
+- How often it appears across content
+
+Format as a priority list (most emphasized first).""",
+
+        "buyer_framing": """Analyze who this content is speaking TO and what they care about.
+
+Identify:
+1. Primary buyer persona(s) (CTO, CFO, VP, etc.)
+2. What they're worried about (risk, timeline, cost, adoption, compliance?)
+3. How the author addresses their worry (proof? speed? governance? flexibility?)
+4. Secondary audiences (users, influencers, other stakeholders?)
+5. What the author assumes the buyer already knows
+
+Format as a buyer profile with their implicit concerns.""",
+
+        "differentiation": """What is the author implicitly claiming is DIFFERENT or SPECIAL about what they're offering?
+
+Not stated as "our product is better" but:
+1. What assumption do they challenge? (e.g., "you need years" → "you need 90 days")
+2. What do they claim others get wrong? (e.g., "point solutions create chaos" → "unified platform solves it")
+3. What capability seems unremarkable to them but novel to the reader?
+4. What do they treat as obvious that competitors see as hard?
+
+Format as assumptions the author is making.""",
+
+        "cta": """What is the author ASKING the reader to do?
+
+Explicit CTAs: "Contact us", "Read more", "Schedule demo"
+Implicit CTAs: "Think about...", "Consider...", "Realize..."
+
+For each CTA:
+1. What action is requested?
+2. When in the narrative does it appear?
+3. How confident/pushy is the CTA?
+4. What's the promised outcome if reader takes action?"""
+    }
+
+    if analysis_type not in prompts:
+        return f"Unknown analysis type: {analysis_type}"
+
+    response = client.messages.create(
+        model="claude-opus-4-8",
+        max_tokens=1000,
+        messages=[
+            {
+                "role": "user",
+                "content": f"{prompts[analysis_type]}\n\n---CONTENT TO ANALYZE---\n\n{content}"
+            }
+        ]
+    )
+
+    return response.content[0].text
+
+
+def analyze_content_batch(content: str) -> dict:
+    """Run all analyses on provided content."""
+
+    analyses = {
+        "themes": None,
+        "tone": None,
+        "value_props": None,
+        "buyer_framing": None,
+        "differentiation": None,
+        "cta": None
+    }
+
+    print("🔍 Analyzing content...")
+    print("=" * 60)
+
+    for analysis_type in analyses.keys():
+        print(f"\n📊 Analyzing: {analysis_type}...")
+        analyses[analysis_type] = analyze_content_with_claude(content, analysis_type)
+        print(f"✓ {analysis_type} complete")
+
+    return analyses
+
+
+def generate_messaging_profile(analyses: dict) -> str:
+    """Synthesize analyses into a messaging profile document."""
+
+    profile = """# Your Messaging Profile (Extracted from Content)
+
+This profile is generated by analyzing your recent LinkedIn posts, articles, and published content.
+It shows what you're *actually* communicating vs. what you might *think* you're communicating.
+
+---
+
+## 1. YOUR CORE THEMES (What You Keep Coming Back To)
+
+"""
+
+    profile += analyses["themes"] + "\n\n"
+
+    profile += """---
+
+## 2. YOUR TONE & VOICE (How You Sound)
+
+"""
+
+    profile += analyses["tone"] + "\n\n"
+
+    profile += """---
+
+## 3. VALUE PROPOSITIONS YOU EMPHASIZE (What You Claim Matters)
+
+"""
+
+    profile += analyses["value_props"] + "\n\n"
+
+    profile += """---
+
+## 4. YOUR BUYER PERSONA (Who You're Speaking To)
+
+"""
+
+    profile += analyses["buyer_framing"] + "\n\n"
+
+    profile += """---
+
+## 5. YOUR IMPLIED DIFFERENTIATION (What Makes You Different)
+
+"""
+
+    profile += analyses["differentiation"] + "\n\n"
+
+    profile += """---
+
+## 6. YOUR CALLS TO ACTION (What You're Asking For)
+
+"""
+
+    profile += analyses["cta"] + "\n\n"
+
+    profile += """---
+
+## SYNTHESIS
+
+Based on this analysis, here's what your content is actually saying (beneath the surface):
+
+**Primary Message**: [To be completed by reviewing all sections above]
+
+**Secondary Messages**: [To be completed]
+
+**Buyer You're Speaking To**: [To be completed]
+
+**Biggest Differentiator**: [To be completed]
+
+**Tone That Works**: [To be completed]
+
+---
+
+## NEXT STEPS FOR GTM
+
+Use this profile to:
+1. Ensure Ask-AI + Enterprise AI Foundry positioning matches your actual voice
+2. Brief content creators on tone/themes that resonate
+3. Calibrate prospect conversations to match your authority
+4. Test messaging variants while staying true to your authentic voice
+
+"""
+
+    return profile
+
+
+def interactive_mode():
+    """Interactive multi-turn analysis with Claude."""
+
+    print("\n🚀 Content Analyzer - Interactive Mode")
+    print("=" * 60)
+    print("Paste your LinkedIn posts, articles, or content below.")
+    print("Separate multiple posts with '---' on its own line.")
+    print("Type 'DONE' when finished, then 'ANALYZE' to generate profile.\n")
+
+    content_parts = []
+
+    while True:
+        line = input()
+
+        if line.strip().upper() == "DONE":
+            break
+        elif line.strip() == "---":
+            content_parts.append("---")
+        else:
+            content_parts.append(line)
+
+    content = "\n".join(content_parts)
+
+    if not content.strip():
+        print("No content provided. Exiting.")
+        return
+
+    print("\n✅ Content collected. Running analysis...\n")
+
+    analyses = analyze_content_batch(content)
+    profile = generate_messaging_profile(analyses)
+
+    print("\n" + "=" * 60)
+    print("📄 MESSAGING PROFILE GENERATED")
+    print("=" * 60)
+    print(profile)
+
+    # Save to file
+    output_path = Path("messaging_profile_generated.md")
+    output_path.write_text(profile)
+    print(f"\n💾 Saved to: {output_path}")
+
+
+def file_mode(input_file: str, output_file: Optional[str] = None):
+    """Analyze content from a file."""
+
+    input_path = Path(input_file)
+
+    if not input_path.exists():
+        print(f"❌ File not found: {input_file}")
+        return
+
+    content = input_path.read_text()
+    print(f"📖 Loaded content from: {input_file}")
+    print(f"📏 Content size: {len(content)} characters\n")
+
+    analyses = analyze_content_batch(content)
+    profile = generate_messaging_profile(analyses)
+
+    if output_file is None:
+        output_file = input_file.replace(".txt", "_profile.md")
+
+    output_path = Path(output_file)
+    output_path.write_text(profile)
+
+    print("\n" + "=" * 60)
+    print("✅ ANALYSIS COMPLETE")
+    print("=" * 60)
+    print(f"📄 Profile saved to: {output_path}\n")
+    print(profile[:500] + "...\n[Profile truncated for display]")
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Analyze content to extract messaging patterns for GTM strategy"
+    )
+    parser.add_argument(
+        "--input",
+        help="Input file with LinkedIn posts/articles (plain text, posts separated by '---')"
+    )
+    parser.add_argument(
+        "--output",
+        help="Output file for messaging profile (default: input_profile.md)"
+    )
+    parser.add_argument(
+        "--interactive",
+        action="store_true",
+        help="Interactive mode: paste content interactively"
+    )
+
+    args = parser.parse_args()
+
+    if args.interactive or not args.input:
+        interactive_mode()
+    else:
+        file_mode(args.input, args.output)
+
+
+if __name__ == "__main__":
+    main()

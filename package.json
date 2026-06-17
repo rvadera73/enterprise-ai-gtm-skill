@@ -1,38 +1,56 @@
 {
   "name": "enterprise-ai-gtm-skill",
   "version": "1.0.0",
-  "description": "Complete GTM + marketing system skill for B2B SaaS products. Generate professional whitepapers, one-pagers, LinkedIn campaigns, and execution guides.",
+  "description": "Framework-driven go-to-market system for ANY enterprise product. Automatically selects positioning framework, runs 6-week workshop, generates 23 strategic artifacts, creates content/lead gen/sales plans customized by buyer type and product stage.",
   "type": "module",
   "keywords": [
     "gtm",
+    "go-to-market",
     "marketing",
+    "positioning",
+    "framework",
     "b2b-saas",
-    "thought-leadership",
-    "linkedin",
-    "campaign",
-    "ai",
-    "skill"
+    "enterprise",
+    "sales",
+    "strategy",
+    "product-marketing",
+    "skill",
+    "claude-code"
   ],
-  "author": "Enterprise AI Team",
-  "license": "MIT",
+  "author": "Rahul Vadera",
+  "email": "ravjdpr@gmail.com",
+  "license": "Proprietary",
   "scripts": {
     "help": "cat README.md",
-    "getting-started": "cat docs/GETTING_STARTED.md",
-    "customize": "cat docs/CUSTOMIZATION_GUIDE.md",
-    "example": "open examples/Enterprise-AI-Foundry/README.md || cat examples/Enterprise-AI-Foundry/README.md"
+    "getting-started": "cat GETTING-STARTED.md"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/enterprise-ai-gtm-skill"
+    "url": "https://github.com/your-username/enterprise-ai-gtm-skill"
   },
   "main": "README.md",
   "files": [
     "README.md",
-    "SKILL.md",
-    "templates/",
+    "SKILL-MANIFEST.md",
+    "GENERIC-GTM-SKILL-DEFINITION.md",
+    "GETTING-STARTED.md",
+    ".claude/",
+    "frameworks/",
+    "positioning/",
+    "content/",
+    "strategy/",
     "examples/",
-    "docs/",
-    "scripts/",
+    "documentation/",
+    "tools/",
     ".gitignore"
-  ]
+  ],
+  "claudeCode": {
+    "skillName": "Enterprise AI GTM Skill",
+    "skillSlug": "enterprise-gtm",
+    "skillCommand": "/enterprise-gtm",
+    "skillVersion": "1.0.0",
+    "skillStatus": "Production Ready",
+    "skillCategory": "Business Strategy & GTM",
+    "skillDefinition": ".claude/skills/enterprise-gtm.yaml"
+  }
 }

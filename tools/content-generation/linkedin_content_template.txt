@@ -1,0 +1,42 @@
+LINKEDIN POST COLLECTION TEMPLATE
+=================================
+
+Instructions:
+1. Go to your LinkedIn profile: https://www.linkedin.com/in/rahul-vadera-1803a61/
+2. Copy each post (entire text, including any links/images descriptions)
+3. Paste into this file
+4. Separate each post with "---" on its own line
+5. Save and run: python content_analyzer.py --input linkedin_content_template.txt
+
+Post 1 (Recent):
+---
+
+Post 2:
+---
+
+Post 3:
+---
+
+Post 4:
+---
+
+Post 5:
+---
+
+Post 6:
+---
+
+ARTICLE/WHITEPAPER CONTENT
+(If you have published articles, paste them below with "ARTICLE:" label)
+
+ARTICLE: [Title]
+---
+
+ARTICLE: [Title]
+---
+
+SPEAKING ENGAGEMENTS/WEBINARS
+(Summarize key points from talks, webinars, or events you've led)
+
+TALK: [Event Name]
+---
