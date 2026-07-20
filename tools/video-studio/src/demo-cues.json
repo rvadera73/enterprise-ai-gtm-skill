@@ -1,0 +1,51 @@
+{
+  "video": "/home/rahulvadera/enterprise-ai-gtm-skill/tools/demo-recorder/out/raw-demo/page@d56c927143b15998d2a7b775abc01acd.webm",
+  "width": 1280,
+  "height": 1400,
+  "cues": [
+    {
+      "name": "open",
+      "at": 0
+    },
+    {
+      "name": "role_ops",
+      "at": 2.9
+    },
+    {
+      "name": "ask_ops",
+      "at": 3.43
+    },
+    {
+      "name": "answer_ops",
+      "at": 4.42
+    },
+    {
+      "name": "role_review",
+      "at": 8.13
+    },
+    {
+      "name": "ask_review",
+      "at": 8.66
+    },
+    {
+      "name": "answer_review",
+      "at": 9.64
+    },
+    {
+      "name": "role_analyst",
+      "at": 13.71
+    },
+    {
+      "name": "ask_analyst",
+      "at": 14.22
+    },
+    {
+      "name": "answer_analyst",
+      "at": 19.7
+    },
+    {
+      "name": "end",
+      "at": 24.91
+    }
+  ]
+}

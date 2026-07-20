@@ -24,6 +24,28 @@ and `docs/gtm/01-linkedin/post-4-*`, `post-5-*`.
 
 ---
 
+## Rule 0 — WEB-SEARCH EVERY CITED FIGURE BEFORE IT SHIPS
+
+**Never publish a statistic from recall.** Search it, confirm the current number and
+the exact wording, and record the source + date you checked in the spec.
+
+This is not theoretical. Building Ask-AI's Video B, the recalled figure was
+"Gartner: ~30% of GenAI projects abandoned after proof of concept by end-2025."
+A search showed that 30% was Gartner's **2024 forecast**, and the **actual outcome
+exceeded 50%**. Quoting the remembered number would have understated reality by
+nearly half — in front of the exact audience most likely to know the real one.
+
+Two failure modes to check for specifically:
+1. **Stale forecasts.** A prediction for a period that has since elapsed reads as
+   dated, and may have been overtaken by the outcome. Prefer the measured result, or
+   a forecast whose horizon is still in the future.
+2. **Contested figures.** Some widely-shared statistics are methodologically
+   disputed (e.g. the "95% of GenAI pilots fail" study). Punchy is not worth
+   defending a weak source in the comments.
+
+Also bound the claim: name the statistic's *cited causes*, and connect your product
+to the one it actually addresses. Do not imply it solves all of them.
+
 ## Two hard rules (learned the expensive way)
 
 1. **Narration must be DOMAIN-FREE.** The viewer is a buyer scrolling a feed with

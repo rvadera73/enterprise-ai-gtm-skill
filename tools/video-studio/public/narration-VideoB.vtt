@@ -1,116 +1,116 @@
 1
-00:00:00,050 --> 00:00:08,341
-Gartner expected nearly a third of generative AI projects to be abandoned after proof of concept by the end of twenty twenty five.
+00:00:00,050 --> 00:00:05,956
+Gartner found that more than half of generative AI projects were abandoned after proof of concept.
 
 2
-00:00:08,341 --> 00:00:10,662
+00:00:05,956 --> 00:00:08,252
 Rarely because the model was wrong.
 
 3
-00:00:10,662 --> 00:00:13,468
+00:00:08,252 --> 00:00:11,058
 Usually because of everything built around it.
 
 4
-00:00:13,468 --> 00:00:14,426
+00:00:11,058 --> 00:00:12,028
 Cost.
 
 5
-00:00:14,426 --> 00:00:15,433
+00:00:12,028 --> 00:00:13,086
 Governance.
 
 6
-00:00:15,433 --> 00:00:16,938
+00:00:13,086 --> 00:00:14,591
 Unclear value.
 
 7
-00:00:16,938 --> 00:00:20,816
+00:00:14,591 --> 00:00:18,775
 And a lot of that gets rebuilt for every single application.
 
 8
-00:00:20,816 --> 00:00:27,563
+00:00:18,775 --> 00:00:25,267
 In the last video, the idea was to build those AI capabilities once, and let applications connect to them.
 
 9
-00:00:27,563 --> 00:00:30,216
+00:00:25,267 --> 00:00:27,933
 That is Ask-AI MCP Service.
 
 10
-00:00:30,216 --> 00:00:32,040
+00:00:27,933 --> 00:00:29,732
 Here is it actually running.
 
 11
-00:00:32,040 --> 00:00:37,665
+00:00:29,732 --> 00:00:35,408
 This is one application, a case management system, with three different kinds of user.
 
 12
-00:00:37,665 --> 00:00:40,969
+00:00:35,408 --> 00:00:39,094
 Two people ask the same system about the same case.
 
 13
-00:00:40,969 --> 00:00:42,882
+00:00:39,094 --> 00:00:40,982
 Should they get the same answer?
 
 14
-00:00:42,882 --> 00:00:46,632
+00:00:40,982 --> 00:00:44,770
 Someone in day to day operations asks about a case.
 
 15
-00:00:46,632 --> 00:00:49,387
+00:00:44,770 --> 00:00:47,397
 They get back what they need to act on.
 
 16
-00:00:49,387 --> 00:00:52,066
+00:00:47,397 --> 00:00:50,165
 The dates, and what is still outstanding.
 
 17
-00:00:52,066 --> 00:00:56,211
+00:00:50,165 --> 00:00:54,298
 Now the same case, asked by someone doing deeper review.
 
 18
-00:00:56,211 --> 00:01:00,076
+00:00:54,298 --> 00:00:58,035
 Same system, same record, and the answer is different.
 
 19
-00:01:00,076 --> 00:01:01,377
+00:00:58,035 --> 00:00:59,387
 The full file.
 
 20
-00:01:01,377 --> 00:01:04,770
+00:00:59,387 --> 00:01:02,640
 Who is involved, where it sits, who is deciding.
 
 21
-00:01:04,770 --> 00:01:09,107
+00:01:02,640 --> 00:01:06,747
 The person's job changes the reasoning, not just what they are allowed to see.
 
 22
-00:01:09,107 --> 00:01:13,647
+00:01:06,747 --> 00:01:11,071
 And for someone working with the data, a question in plain English.
 
 23
-00:01:13,647 --> 00:01:19,183
+00:01:11,071 --> 00:01:16,505
 Ask-AI MCP Service writes the query, runs it, and returns the chart.
 
 24
-00:01:19,183 --> 00:01:21,313
+00:01:16,505 --> 00:01:18,698
 You can see the SQL it generated.
 
 25
-00:01:21,313 --> 00:01:23,915
+00:01:18,698 --> 00:01:21,403
 Nobody built that dashboard in advance.
 
 26
-00:01:23,915 --> 00:01:26,747
+00:01:21,403 --> 00:01:24,374
 One shared service underneath all three.
 
 27
-00:01:26,747 --> 00:01:30,905
+00:01:24,374 --> 00:01:28,520
 Each application still owns its own logic and its own data.
 
 28
-00:01:30,905 --> 00:01:32,270
+00:01:28,520 --> 00:01:29,936
 Try it yourself.
 
 29
-00:01:32,270 --> 00:01:38,635
+00:01:29,936 --> 00:01:36,058
 The Ask-AI MCP Service demo is linked in the post, and I would like to know what you would want it to answer.
 

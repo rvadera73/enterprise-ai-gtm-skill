@@ -17,10 +17,13 @@ import ffmpegPath from 'ffmpeg-static';
 const HERE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const cfg = JSON.parse(readFileSync(path.resolve(HERE, process.argv[2]), 'utf8'));
 
+// Namespace per composition id — a shared narration.mp3/timings.json meant
+// generating a second video silently clobbered the first one's assets.
+const ID = cfg.id || 'Video';
 const PUBLIC = path.join(HERE, 'public');
 mkdirSync(PUBLIC, { recursive: true });
-const mp3 = path.join(PUBLIC, 'narration.mp3');
-const vtt = path.join(HERE, 'public', 'narration.vtt');
+const mp3 = path.join(PUBLIC, `narration-${ID}.mp3`);
+const vtt = path.join(PUBLIC, `narration-${ID}.vtt`);
 const TTS = path.join(HERE, '.venv/bin/edge-tts');
 
 console.log(`▶ narrating as ${cfg.voice} (one continuous take)`);
@@ -100,8 +103,9 @@ const scenes = cfg.scenes.map((s, i) => {
 });
 scenes.forEach((s, i) => { s.end = i < scenes.length - 1 ? scenes[i + 1].start : total; });
 
-const out = { total, fps: 30, scenes };
-writeFileSync(path.join(HERE, 'src', 'timings.json'), JSON.stringify(out, null, 2));
+const out = { id: ID, audio: `narration-${ID}.mp3`, total, fps: 30, scenes };
+writeFileSync(path.join(HERE, 'src', `timings-${ID}.json`), JSON.stringify(out, null, 2));
+if (ID === 'VideoA') writeFileSync(path.join(HERE, 'src', 'timings.json'), JSON.stringify(out, null, 2));
 
 console.log(`  duration ${total.toFixed(1)}s`);
 scenes.forEach(s => console.log(`  ${s.key.padEnd(10)} ${s.start.toFixed(2)}s → ${s.end.toFixed(2)}s  (${(s.end - s.start).toFixed(1)}s)`));

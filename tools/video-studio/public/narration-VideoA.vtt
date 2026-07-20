@@ -1,0 +1,72 @@
+1
+00:00:00,050 --> 00:00:05,505
+Organizations are adding AI to more business applications every quarter.
+
+2
+00:00:05,505 --> 00:00:07,525
+And a pattern is emerging.
+
+3
+00:00:07,525 --> 00:00:11,805
+Most of those applications need the same AI capabilities.
+
+4
+00:00:11,805 --> 00:00:20,795
+Whether it is case management, analytics, knowledge management, a CRM, or a legacy system, they all need the same foundations.
+
+5
+00:00:20,795 --> 00:00:21,830
+Retrieval.
+
+6
+00:00:21,830 --> 00:00:22,979
+Analytics.
+
+7
+00:00:22,979 --> 00:00:24,166
+Orchestration.
+
+8
+00:00:24,166 --> 00:00:25,479
+Access control.
+
+9
+00:00:25,479 --> 00:00:26,464
+Governance.
+
+10
+00:00:26,464 --> 00:00:30,820
+Many organizations rebuild all of that application by application.
+
+11
+00:00:30,820 --> 00:00:37,992
+Every rebuild adds engineering effort, adds cost, and adds one more thing to govern.
+
+12
+00:00:37,992 --> 00:00:42,664
+Ask-AI MCP Service offers another architectural approach.
+
+13
+00:00:42,664 --> 00:00:55,984
+Ask-AI MCP Service provides those capabilities once, as a shared MCP service that applications simply connect to, while each application keeps its own business logic, workflows, and data.
+
+14
+00:00:55,984 --> 00:01:08,573
+Inside Ask-AI MCP Service: retrieval augmented generation, analytics and graph agents, workflow orchestration, governance, access control, auditing, and model management.
+
+15
+00:01:08,573 --> 00:01:11,729
+The goal is not to standardize every application.
+
+16
+00:01:11,729 --> 00:01:18,371
+It is to standardize the AI capabilities that almost every application already requires.
+
+17
+00:01:18,371 --> 00:01:28,585
+As AI adoption accelerates, the key architectural question may not be which model to use, but where AI belongs within the enterprise architecture.
+
+18
+00:01:28,585 --> 00:01:34,936
+Explore the Ask-AI MCP Service demo using the link in the post, and share your feedback.
+

@@ -1,0 +1,21 @@
+{
+  "id": "VideoB",
+  "voice": "en-US-AvaMultilingualNeural",
+  "rate": "-2%",
+  "_voiceNote": "Female narrator per brief. Ava/Emma multilingual voices carry better prosody than the base neural set. Swap to en-US-EmmaMultilingualNeural or en-US-JennyNeural to compare.",
+  "_hookNote": "VERIFIED BY WEB SEARCH (2026-07), not recalled. Gartner: by end of 2025, OVER 50% of GenAI projects were abandoned after proof of concept (poor data quality, insufficient risk controls, rising costs, unclear business value). NOTE: the widely-quoted '30%' is Gartner's 2024 FORECAST for end-2025 — the actual outcome exceeded it. Quoting 30% today understates it by nearly half. Alternatives: Gartner Jun-2025 (>40% of agentic AI projects cancelled by end-2027 — forward-looking, does not go stale); RAND 2024 (>80% of AI projects fail, broader than GenAI); MIT NANDA 2025 (95% of pilots, methodologically contested — avoid). LESSON: always web-search a cited figure before publishing; recalled statistics go stale and forecasts get overtaken by outcomes. Claim stays deliberately limited: duplicated infrastructure is ONE contributing factor to the cited causes — do not claim Ask-AI prevents AI project failure.",
+  "narration": "Gartner found that more than half of generative AI projects were abandoned after proof of concept. Rarely because the model was wrong. Usually because of everything built around it. Cost. Governance. Unclear value. And a lot of that gets rebuilt for every single application. In the last video, the idea was to build those AI capabilities once, and let applications connect to them. That is Ask-AI MCP Service. Here is it actually running. This is one application, a case management system, with three different kinds of user. Two people ask the same system about the same case. Should they get the same answer? Someone in day to day operations asks about a case. They get back what they need to act on. The dates, and what is still outstanding. Now the same case, asked by someone doing deeper review. Same system, same record, and the answer is different. The full file. Who is involved, where it sits, who is deciding. The person's job changes the reasoning, not just what they are allowed to see. And for someone working with the data, a question in plain English. Ask-AI MCP Service writes the query, runs it, and returns the chart. You can see the SQL it generated. Nobody built that dashboard in advance. One shared service underneath all three. Each application still owns its own logic and its own data. Try it yourself. The Ask-AI MCP Service demo is linked in the post, and I would like to know what you would want it to answer.",
+  "scenes": [
+    { "key": "stat",     "marker": "gartner found that more than half" },
+    { "key": "why",      "marker": "rarely because the model was wrong" },
+    { "key": "callback", "marker": "in the last video" },
+    { "key": "setup",    "marker": "this is one application" },
+    { "key": "hook",     "marker": "two people ask the same system" },
+    { "key": "ops",      "marker": "someone in day to day operations" },
+    { "key": "review",   "marker": "now the same case" },
+    { "key": "insight",  "marker": "the person's job changes the reasoning" },
+    { "key": "analytics","marker": "and for someone working with the data" },
+    { "key": "shared",   "marker": "one shared service underneath" },
+    { "key": "cta",      "marker": "try it yourself" }
+  ]
+}

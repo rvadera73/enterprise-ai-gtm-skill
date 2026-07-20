@@ -1,19 +1,18 @@
 import React from 'react';
 import { Composition } from 'remotion';
 import { VideoA } from './VideoA.jsx';
-import timings from './timings.json';
+import { VideoB } from './VideoB.jsx';
+import timingsA from './timings-VideoA.json';
+import timingsB from './timings-VideoB.json';
 
-const FPS = timings.fps || 30;
+const FPS = 30;
+const frames = (t) => Math.ceil((t.total + 0.9) * FPS);
 
 export const RemotionRoot = () => (
   <>
-    <Composition
-      id="VideoA"
-      component={VideoA}
-      durationInFrames={Math.ceil((timings.total + 0.9) * FPS)}
-      fps={FPS}
-      width={1080}
-      height={1080}
-    />
+    <Composition id="VideoA" component={VideoA} durationInFrames={frames(timingsA)}
+      fps={FPS} width={1080} height={1080} />
+    <Composition id="VideoB" component={VideoB} durationInFrames={frames(timingsB)}
+      fps={FPS} width={1080} height={1080} />
   </>
 );

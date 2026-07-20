@@ -6,7 +6,7 @@ import {
 import { T, APPS, FOUNDATIONS, CAPS } from './theme.js';
 import { SkRect, SkEllipse, SkLine, SkUnderline, SkCircleAround, SkIcon, SkFigure } from './Sketch.jsx';
 import { Search, ChartColumn, Share2, Workflow, ShieldCheck, Lock, FileCheck, Box } from 'lucide';
-import timings from './timings.json';
+import timings from './timings-VideoA.json';
 
 const CAP_ICONS = [Search, ChartColumn, Share2, Workflow, ShieldCheck, Lock, FileCheck, Box];
 const FOUND_ICONS = [Search, ChartColumn, Workflow, Lock, ShieldCheck];
@@ -116,7 +116,7 @@ export const VideoA = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: T.paper, fontFamily: T.display }}>
-      <Audio src={staticFile('narration.mp3')} />
+      <Audio src={staticFile(timings.audio)} />
 
       {/* paper tooth */}
       <AbsoluteFill style={{
