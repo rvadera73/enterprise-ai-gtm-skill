@@ -1,0 +1,17 @@
+{
+  "name": "gtm-demo-recorder",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "enterprise-gtm: render narrated product videos (slide deck or live demo) to MP4. No paid services, no sudo.",
+  "scripts": {
+    "setup": "npm install && npx playwright install chromium && python3 -m venv .venv && ./.venv/bin/pip install --quiet edge-tts",
+    "video": "node record.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0"
+  },
+  "dependencies": {
+    "ffmpeg-static": "^5.2.0"
+  }
+}

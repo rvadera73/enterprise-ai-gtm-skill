@@ -1,0 +1,16 @@
+{
+  "id": "VideoA",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "-1%",
+  "narration": "Organizations are adding AI to more business applications every quarter. And a pattern is emerging. Most of those applications need the same AI capabilities. Whether it is case management, analytics, knowledge management, a CRM, or a legacy system, they all need the same foundations. Retrieval. Analytics. Orchestration. Access control. Governance. Many organizations rebuild all of that application by application. Every rebuild adds engineering effort, adds cost, and adds one more thing to govern. Ask-AI MCP Service offers another architectural approach. Ask-AI MCP Service provides those capabilities once, as a shared MCP service that applications simply connect to, while each application keeps its own business logic, workflows, and data. Inside Ask-AI MCP Service: retrieval augmented generation, analytics and graph agents, workflow orchestration, governance, access control, auditing, and model management. The goal is not to standardize every application. It is to standardize the AI capabilities that almost every application already requires. As AI adoption accelerates, the key architectural question may not be which model to use, but where AI belongs within the enterprise architecture. Explore the Ask-AI MCP Service demo using the link in the post, and share your feedback.",
+  "scenes": [
+    { "key": "pattern",   "marker": "organizations are adding ai" },
+    { "key": "sameneeds", "marker": "whether it is case management" },
+    { "key": "rebuild",   "marker": "many organizations rebuild" },
+    { "key": "askai",     "marker": "ask-ai mcp service offers another" },
+    { "key": "caps",      "marker": "inside ask-ai mcp service" },
+    { "key": "standard",  "marker": "the goal is not to standardize" },
+    { "key": "question",  "marker": "as ai adoption accelerates" },
+    { "key": "cta",       "marker": "explore the ask-ai mcp service demo" }
+  ]
+}

@@ -27,3 +27,14 @@ temp/
 # OS
 Thumbs.db
 .DS_Store
+
+# Video studio / demo recorder build artefacts (added 2026-07)
+.venv/
+out/
+tools/*/out/
+tools/*/.venv/
+public/narration.mp3
+public/narration.vtt
+src/timings.json
+*.mp4
+*.webm

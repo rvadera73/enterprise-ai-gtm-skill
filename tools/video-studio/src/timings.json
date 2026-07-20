@@ -1,0 +1,46 @@
+{
+  "total": 95.06,
+  "fps": 30,
+  "scenes": [
+    {
+      "key": "pattern",
+      "start": 0,
+      "end": 11.805
+    },
+    {
+      "key": "sameneeds",
+      "start": 11.805,
+      "end": 26.464
+    },
+    {
+      "key": "rebuild",
+      "start": 26.464,
+      "end": 37.992
+    },
+    {
+      "key": "askai",
+      "start": 37.992,
+      "end": 55.984
+    },
+    {
+      "key": "caps",
+      "start": 55.984,
+      "end": 68.573
+    },
+    {
+      "key": "standard",
+      "start": 68.573,
+      "end": 78.371
+    },
+    {
+      "key": "question",
+      "start": 78.371,
+      "end": 88.585
+    },
+    {
+      "key": "cta",
+      "start": 88.585,
+      "end": 95.06
+    }
+  ]
+}

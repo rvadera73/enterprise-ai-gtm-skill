@@ -1,0 +1,23 @@
+{
+  "output": "ask-ai-video-a.mp4",
+  "url": "file:///home/rahulvadera/enterprise-ai-gtm-skill/tools/demo-recorder/decks/ask-ai-video-a.html",
+  "width": 1080,
+  "height": 1080,
+  "deviceScaleFactor": 2,
+  "advanceKey": "Space",
+  "padSeconds": 0.55,
+  "rate": "-8%",
+  "leadInMs": 900,
+  "tailMs": 1400,
+  "voices": ["en-US-AriaNeural", "en-US-GuyNeural"],
+  "injectCss": "body{padding:0 !important;background:#0E1620 !important;overflow:hidden}.stage{width:100vw !important;height:100vh !important;max-width:none !important;max-height:none !important;aspect-ratio:auto !important;border:none !important}.hint,.notes{display:none !important}",
+  "beats": [
+    { "text": "As organizations adopt AI across more applications, a pattern is emerging. The AI requirements are remarkably similar, whatever the application." },
+    { "text": "Case management, analytics, a knowledge portal, a CRM, a legacy application. Each one needs the same five things." },
+    { "text": "So each team builds them again. The real cost isn't the duplicated effort. It's that AI becomes an application by application project, rather than something the organization has." },
+    { "text": "Another approach is to provide those capabilities once, as a shared service that applications simply connect to." },
+    { "text": "What stays with each application is the part that genuinely differs. What questions matter, what data matters, and what each kind of user needs." },
+    { "text": "The intent isn't to standardize every application. It's to standardize the AI capabilities that nearly every application requires." },
+    { "text": "As AI adoption accelerates, the important architectural question may not be which model to use, but where AI belongs within the enterprise architecture." }
+  ]
+}
