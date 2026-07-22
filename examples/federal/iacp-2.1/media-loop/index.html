@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Media Loop</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background: #000; overflow: hidden;
+  }
+  #stage {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #000;
+  }
+  #stage video, #stage img {
+    max-width: 100%; max-height: 100%;
+    width: 100%; height: 100%;
+    object-fit: contain;
+  }
+  #stage embed {
+    position: fixed; inset: 0;
+    width: 100vw; height: 100vh;
+    border: none;
+  }
+  #overlay {
+    position: fixed; inset: 0;
+    background: #000;
+    color: #eee;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    font-family: system-ui, sans-serif;
+    cursor: pointer;
+    z-index: 10;
+  }
+  #overlay button {
+    font-size: 1.4rem;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    border: none;
+    background: #2d7dfb;
+    color: #fff;
+    cursor: pointer;
+  }
+  #overlay p {
+    margin-top: 1rem;
+    opacity: 0.6;
+    font-size: 0.9rem;
+  }
+  #status {
+    position: fixed; bottom: 10px; right: 14px;
+    color: #666; font: 12px system-ui, sans-serif;
+    z-index: 5;
+  }
+</style>
+</head>
+<body>
+  <div id="stage"></div>
+  <div id="status"></div>
+  <div id="overlay" style="display:none">
+    <button id="startBtn">Resume Loop</button>
+    <p>Stopped. Click to resume, or Esc again to re-stop.</p>
+  </div>
+
+  <script src="playlist.js"></script>
+  <script>
+    // Adjust how long non-video items are shown (milliseconds).
+    const CONFIG = {
+      imageDurationMs: 8000,
+      pdfDurationMs: 15000,
+    };
+
+    const VIDEO_EXT = new Set(["mp4", "webm", "mov", "mkv", "m4v"]);
+    const IMAGE_EXT = new Set(["jpg", "jpeg", "png", "gif", "webp", "bmp"]);
+
+    const stage = document.getElementById("stage");
+    const statusEl = document.getElementById("status");
+    const overlay = document.getElementById("overlay");
+    const startBtn = document.getElementById("startBtn");
+
+    let index = 0;
+    let timer = null;
+    let running = false;
+
+    function ext(path) {
+      const clean = path.split("?")[0].split("#")[0];
+      const parts = clean.split(".");
+      return parts.length > 1 ? parts.pop().toLowerCase() : "";
+    }
+
+    function clearStage() {
+      if (timer) { clearTimeout(timer); timer = null; }
+      stage.innerHTML = "";
+    }
+
+    function next() {
+      index = (index + 1) % PLAYLIST.length;
+      showItem(index);
+    }
+
+    function showItem(i) {
+      if (!running) return;
+      clearStage();
+      const file = PLAYLIST[i];
+      const e = ext(file);
+      statusEl.textContent = `${i + 1}/${PLAYLIST.length}  ${file}`;
+
+      if (VIDEO_EXT.has(e)) {
+        const v = document.createElement("video");
+        v.src = "media/" + file;
+        v.autoplay = true;
+        v.controls = false;
+        v.muted = false;
+        v.addEventListener("ended", next);
+        v.addEventListener("error", () => { console.warn("video failed:", file); next(); });
+        stage.appendChild(v);
+        v.play().catch(() => { v.muted = true; v.play(); });
+      } else if (e === "pdf") {
+        const emb = document.createElement("embed");
+        emb.src = "media/" + file + "#toolbar=0&navpane=0&scrollbar=0&view=Fit";
+        emb.type = "application/pdf";
+        stage.appendChild(emb);
+        timer = setTimeout(next, CONFIG.pdfDurationMs);
+      } else if (IMAGE_EXT.has(e)) {
+        const img = document.createElement("img");
+        img.src = "media/" + file;
+        stage.appendChild(img);
+        timer = setTimeout(next, CONFIG.imageDurationMs);
+      } else {
+        console.warn("Unrecognized file type, skipping:", file);
+        next();
+      }
+    }
+
+    function start() {
+      if (!PLAYLIST || PLAYLIST.length === 0) {
+        running = false;
+        statusEl.textContent = "playlist.js is empty -- add files to media/ and run generate-playlist.ps1";
+        setTimeout(start, 3000); // keep checking in case files/playlist get added while this is open
+        return;
+      }
+      running = true;
+      overlay.style.display = "none";
+      // No requestFullscreen() here: launch.bat already runs Chrome with
+      // --kiosk, which fills the screen. Also calling the HTML5 Fullscreen
+      // API on top of that races the viewport resize against the PDF
+      // plugin's internal layout and leaves it rendered at half size.
+      index = 0;
+      showItem(index);
+    }
+
+    function stop() {
+      running = false;
+      clearStage();
+      overlay.style.display = "flex";
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    }
+
+    startBtn.addEventListener("click", start);
+    overlay.addEventListener("click", start);
+    document.addEventListener("keydown", (ev) => {
+      if (ev.key === "Escape") { if (running) stop(); else start(); }
+    });
+
+    window.addEventListener("load", start);
+  </script>
+</body>
+</html>

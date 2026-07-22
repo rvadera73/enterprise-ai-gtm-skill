@@ -38,3 +38,7 @@ public/narration.vtt
 src/timings.json
 *.mp4
 *.webm
+
+# media-loop-player instances: these are source assets for the kiosk player,
+# not generated output -- track them despite the extension rules above.
+!**/media-loop/media/**

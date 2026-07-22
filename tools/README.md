@@ -35,6 +35,19 @@ Automated marketing asset generation (legacy).
 
 **Note**: These are lower priority. Focus on positioning and lead gen first.
 
+### `/media-loop-player/`
+Unattended kiosk/demo player — loops videos, PDFs, and images from a `media/`
+folder in filename order, no interaction needed after launch.
+
+**Files**:
+- `index.html` — the player (self-contained, no build step)
+- `generate-playlist.ps1` — rebuilds `playlist.js` from the `media/` folder
+- `launch.bat` — opens Chrome full-screen in `--kiosk` mode with autoplay unrestricted
+- `README.md` — setup + how to spin up a new per-project instance
+
+**Use for**: conference booth screens, lobby displays, unattended sales demo loops.
+See `examples/federal/iacp-2.1/media-loop/` for a working instance.
+
 ---
 
 ## Quick Start
