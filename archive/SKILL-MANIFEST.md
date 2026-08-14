@@ -635,4 +635,3 @@ Review: Ask-AI, Risk Scoring, eCourt examples in /frameworks/GENERIC-CONTENT-LEA
 ---
 
 **This skill is ready to use. Start with your product information and the skill will guide you through positioning, content, lead gen, and sales.**
-

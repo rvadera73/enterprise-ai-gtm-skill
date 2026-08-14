@@ -566,4 +566,3 @@ Close (1 min):
 ---
 
 **You're ready. Open Claude Code and run `/enterprise-gtm` to get started.**
-
