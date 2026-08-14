@@ -9,10 +9,17 @@ Read `GTM-ASSET-PLAYBOOK.md` first. Rule 0 (`VIDEO-ASSET-TEMPLATES.md`) is manda
 
 ## 1. What is this?
 
-- **Asset:** video (architecture / demo / feature-detail) · one-pager · post image
+- **Asset:** video (hybrid — if a live, demoable UI exists, see `GTM-ASSET-PLAYBOOK.md`
+  §1 / explain-only — if no demoable UI exists / feature-detail — narrower hybrid
+  variant, for a warmer audience) · one-pager · post image
 - **Product name, exactly as it must be said:** `______` (e.g. "Ask-AI MCP Service")
 - **Length target:** `__` seconds → **word budget = seconds × 2.5** (≈150 wpm)
 - **Where it will be published:** LinkedIn native · X · demo page · deck
+- **Capture plan reference** (if this campaign supports a government pursuit):
+  `______` — cite the `CAPTURE_PLAN_[opportunity].md` file from
+  proposal-development's capture-management work here for positioning inputs
+  (differentiators, proof points, competitor angle) rather than re-deriving them
+  from scratch.
 
 ## 2. Audience
 
@@ -29,7 +36,8 @@ One sentence. If it takes two, the asset is trying to do too much.
 
 ## 4. The opening (BLUF)
 
-A fact or tension, not a setup.
+A fact or tension, not a setup. BLUF passes the 3-line compression test
+(`GTM-ASSET-PLAYBOOK.md` §13.4).
 
 - **Verified figure:** `______`
 - **Source + date checked:** `______`  ← **Rule 0. Web-search it. No exceptions.**
@@ -77,33 +85,45 @@ beat every assertion we could have written.)
 
 ## 12. Visual
 
-- **Archetype's visual world** (pick ONE, never between): brand-navy · sketch · product capture
+- **Explain-beat visual world** (pick ONE, never mix sketch and polished within the
+  graphics themselves): brand-navy · sketch — alternating with real product-capture
+  proof beats is the default archetype, not a violation of this (§4 rule 3)
+- **Explain beats built as native Remotion components, not patched NotebookLM
+  slides?** yes / no — if no, say why (§2.1)
 - **Follows `DESIGN-SYSTEM.md`?** yes / no — if no, say why
 - **Diagram inherits the layered-band structure?** yes / no
 - **Capability names used verbatim from the taxonomy?** yes / no
 
-## 13. Demo-only (skip for architecture assets)
+## 13. Proof beats (skip only for a pure-explainer asset with no live capture at all)
 
 - **Has someone confirmed the UI can actually show this?** ← the app-switcher lesson
 - **Which real inputs / starter questions produce data?** `______`
 - **Max two features.** Which two? `______`
 - **Auth:** can it run gate-off locally? `______`
+- **For each proof beat: what does a LATER action in this beat depend on that an
+  earlier action (a domain/context switch, a data load) might not have settled yet?**
+  Budget an explicit settle-wait, don't assume synchronous (§4 rule 15)
 
 ## 14. Narration
 
 - **Voice:** `______` (male/female; multilingual neural voices carry better prosody)
 - **Written for the ear?** no one-word sentences; commas/em-dashes inside a thought;
   numbers spelled as spoken; read aloud before generating
+- **Unhedged and declarative?** caveats/scenarios go on an on-screen label if they
+  must appear at all, never stacked into the voiceover line (§13.4)
 - **Within word budget** (§1)? `______` words
 
 ---
 
 ## Definition of ready
 
-- [ ] Single idea fits one sentence
+- [ ] Single idea fits one sentence, and the BLUF passes the 3-line compression test
+  (`GTM-ASSET-PLAYBOOK.md` §13.4)
 - [ ] Opening figure **web-verified**, source + date recorded
 - [ ] Claim boundaries written down
-- [ ] Visual world chosen, not hybridised
-- [ ] Demo capability confirmed against the real UI (demo assets)
+- [ ] Explain-beat visual world chosen, not mixing sketch/polished styles within it
+  (alternating with proof beats is expected, not a violation)
+- [ ] Proof-beat capability confirmed against the real UI, incl. settle-waits for any
+  domain/context-dependent view
 - [ ] Script within word budget
 - [ ] **Storyboard reviewed and signed off before any code** ← the gate we skipped twice
