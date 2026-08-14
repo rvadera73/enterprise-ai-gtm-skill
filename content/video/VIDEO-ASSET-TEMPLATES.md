@@ -13,14 +13,16 @@ and `docs/gtm/01-linkedin/post-4-*`, `post-5-*`.
 
 ---
 
-## The two-video set
+## The hybrid archetype — see the playbook for the gate + spec
 
-| | Video A — "Why" | Video B — "Proof" |
-|---|---|---|
-| Format | Narrated slideshow (NotebookLM) | Screen recording + AI voiceover |
-| Length | ~75s | ~90s |
-| Job | Explain the problem + the shift | Show the live product working |
-| Ends on | "here's what it looks like" | a genuine question + demo |
+See `GTM-ASSET-PLAYBOOK.md` §1 for the archetype gate and beat-type table — read
+that first.
+
+The templates below (originally split as "Video A" / "Video B") are now read as a
+**beat library** — pull individual beat templates from whichever original section
+fits the moment (opening/problem/shift beats from "Video A template" below, feature-
+proof beats from "Video B template" below) and sequence them into one script per
+`GTM-ASSET-PLAYBOOK.md` §1's alternation pattern, rather than building two assets.
 
 ---
 
@@ -63,7 +65,7 @@ has to be rebuilt from scratch. Script against reality.
 
 ---
 
-## Video A template — narrated slideshow (~75s, 7 beats)
+## Video A template — explain-beat library (originally a standalone ~75s slideshow)
 
 **[Slide 1 — Title: "{{CORE_POSITIONING_LINE}}"]**
 "There's a problem hiding inside most {{CATEGORY}} efforts."
@@ -117,7 +119,7 @@ through TTS for exact control.
 
 ---
 
-## Video B template — screen demo (~90s, 6 VO lines)
+## Video B template — proof-beat library (originally a standalone ~90s screen demo)
 
 Spine: **same record, different user, different answer** → then one more capability.
 
