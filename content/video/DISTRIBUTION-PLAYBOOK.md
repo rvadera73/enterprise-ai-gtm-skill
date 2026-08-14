@@ -43,9 +43,16 @@ the feeder.**
    drive-by self-promotion.
 
 ### 1.2 Sequencing
-- Video A ("why") → wait **3–7 days** → Video B ("proof").
-- **Minimum 24–48h between any two posts** — closer together and they compete for
-  the same audience.
+- **Hybrid archetype (the common case now):** publish as a single asset, one native
+  post. There is no separate "why" video and "proof" video to sequence — the explain
+  and proof beats already live in the same continuous video (`GTM-ASSET-PLAYBOOK.md`
+  §1).
+- **Fallback — genuinely separate assets (real but less common):** only when the
+  archetype gate (`GTM-ASSET-PLAYBOOK.md` §1) produces a real explain-only video
+  *plus* a separate proof asset published later, sequence explain-only ("why") → wait
+  **3–7 days** → the proof asset ("proof").
+- **Minimum 24–48h between any two posts, either case** — closer together and they
+  compete for the same audience.
 
 ### 1.3 The first 90 minutes (matters more than the copy)
 - Publish only when you can **reply for ~90 minutes**. Early reply velocity is the
@@ -114,7 +121,10 @@ Never launch both channels the same day.
 
 ## 4. Asset rules (both platforms)
 - **Burned-in captions, always** — both autoplay muted.
-- **One 1:1 (1080×1080) master** serves both. Cut 9:16 only for Reels/Shorts.
+- **Pick the aspect ratio per `GTM-ASSET-PLAYBOOK.md` §4 rule 10** — match the source
+  content's actual aspect ratio, usually 16:9 for slide/hybrid content. Cut a 9:16 or
+  1:1 version only if the specific platform/placement genuinely needs it, rather than
+  defaulting to a fixed 1:1 master.
 - MP4 / H.264, <200MB. **Native upload** — never a YouTube link as the primary post.
 
 ---
