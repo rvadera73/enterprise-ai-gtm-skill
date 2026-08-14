@@ -1,0 +1,15 @@
+{
+  "id": "VideoAPanelV7",
+  "audio": "panel-v7-FINAL.wav",
+  "total": 139.8,
+  "fps": 30,
+  "scenes": [
+    { "key": "intro",      "start": 0,       "end": 15.295 },
+    { "key": "evidence",   "start": 15.295,  "end": 36.86 },
+    { "key": "layer",      "start": 36.86,   "end": 68.275 },
+    { "key": "defensible", "start": 68.275,  "end": 85.975 },
+    { "key": "shadow",     "start": 85.975,  "end": 115.95 },
+    { "key": "close",      "start": 115.95,  "end": 136.335 },
+    { "key": "cta",        "start": 136.335, "end": 139.8 }
+  ]
+}

@@ -14,23 +14,26 @@ would have caught both. Code costs hours.
 | | |
 |---|---|
 | Asset | `______` |
-| Archetype | architecture / demo / feature-detail |
+| Archetype | hybrid (if a live, demoable UI exists — see `GTM-ASSET-PLAYBOOK.md` §1) / explain-only (if no demoable UI exists) / feature-detail (narrower hybrid variant, for a warmer audience) |
 | Length target | `__`s · word budget `__` (seconds × 2.5) |
-| Visual world | brand-navy / sketch / product capture — **one only** |
+| Explain-beat visual world | brand-navy / sketch — **one only, within explain beats** |
 | Narrator | `______` |
 
 ## The beats
 
-One row per beat. Keep narration in the row so length is visible as you write.
+One row per beat. Keep narration in the row so length is visible as you write. Mark
+each beat's **type** — explain (Remotion graphic) or proof (live capture) — per the
+alternation pattern in `GTM-ASSET-PLAYBOOK.md` §1: open on an explain beat, then
+alternate proof beats with short explain beats that name what was just shown.
 
-| # | Beat | On screen | Narration (verbatim) | Words | What the viewer should now understand |
-|---|---|---|---|---|---|
-| 1 | BLUF | | | | |
-| 2 | reframe | | | | |
-| 3 | contrast | | | | |
-| 4 | mechanism | | | | |
-| 5 | benefit | | | | |
-| 6 | close/question | | | | |
+| # | Beat | Type | On screen | Narration (verbatim) | Words | What the viewer should now understand |
+|---|---|---|---|---|---|---|
+| 1 | BLUF | explain | | | | |
+| 2 | reframe | explain | | | | |
+| 3 | contrast | explain | | | | |
+| 4 | mechanism | proof | | | | |
+| 5 | benefit | explain | | | | |
+| 6 | close/question | explain | | | | |
 
 **Total words:** `____` / budget `____`
 
@@ -38,9 +41,12 @@ One row per beat. Keep narration in the row so length is visible as you write.
 
 **Narrative**
 - [ ] Opens on a fact or tension, not a setup
+- [ ] BLUF passes the 3-line compression test (`GTM-ASSET-PLAYBOOK.md` §13.4)
 - [ ] Exactly ONE concrete contrast — not a feature list
 - [ ] There is a *visible mechanism* the viewer can see working
 - [ ] Benefit stated as consequence, not adjective
+- [ ] Narration is unhedged and declarative — caveats/scenarios live on an on-screen
+  label if they must appear at all, never stacked into the voiceover line itself
 - [ ] Closes on a question, not a CTA
 - [ ] Product named 3–4×, functionally
 
@@ -64,12 +70,23 @@ One row per beat. Keep narration in the row so length is visible as you write.
 - [ ] Within word budget
 
 **Visual**
-- [ ] One visual world, not a hybrid
+- [ ] Explain beats share one visual world (not a mix of sketch and polished styles
+  within the graphics themselves — alternating explain/proof beat TYPES is the
+  default archetype, not a violation of this, `GTM-ASSET-PLAYBOOK.md` §4 rule 3)
+- [ ] Explain-beat graphics are native components (props/data-driven), not exported
+  and hand-patched NotebookLM slide images (§2.1) — unless this is a pure explainer
+  asset with no proof beats at all
 - [ ] Follows `DESIGN-SYSTEM.md` (or divergence is deliberate and recorded)
 - [ ] Diagrams inherit the layered-band structure
 - [ ] Capability names verbatim from the taxonomy
 - [ ] No beat is just a headline with empty space beneath it
 - [ ] The pivotal transformation *animates* rather than cutting
+
+**Sync (proof beats only)**
+- [ ] Each proof beat's narration window is the recording target, not a guarantee —
+  settle-waits for any dependent UI state change are budgeted in (§4 rule 15)
+- [ ] Plan to verify each recording at a mid-window checkpoint, not just the final
+  frame, before accepting its duration (§4 rule 14)
 
 **Sign-off:** `______`  **Date:** `______`
 
@@ -86,3 +103,6 @@ One row per beat. Keep narration in the row so length is visible as you write.
 | Rule 0 | Recalled figure was ~2× off the verified one |
 | No one-word sentences | Terminal pauses → flat, gappy delivery |
 | No empty-space beats | Three versions shipped with content stranded in the top third |
+| BLUF compression test | A 60-slide answer was less credible than a 3-line one (CEO vs. CFO example) |
+| Native component over patched slide | Two watermark-removal attempts + a wrong-field fix + an overclaim fix, all on ONE reused NotebookLM slide |
+| Mid-window check, not just final frame | A recorded beat passed at its last frame while ~2/3 of its middle was stuck on a spinner |

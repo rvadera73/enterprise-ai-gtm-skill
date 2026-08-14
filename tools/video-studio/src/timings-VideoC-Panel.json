@@ -1,0 +1,12 @@
+{
+  "total": 75.301,
+  "scenes": [
+    { "key": "final_02", "start": 0.0, "end": 16.275 },
+    { "key": "final_03", "start": 16.275, "end": 44.835 },
+    { "key": "precision-reveal", "start": 44.835, "end": 55.547 },
+    { "key": "final_04", "start": 55.547, "end": 63.888 },
+    { "key": "final_05", "start": 63.888, "end": 69.425 },
+    { "key": "final_06", "start": 69.425, "end": 73.183 },
+    { "key": "final_01", "start": 73.183, "end": 75.301 }
+  ]
+}

@@ -173,8 +173,9 @@ Instead of 7 assets, professional companies generate 15-25 derived assets per ca
 
 ### Already Built
 - `generate_post.py` — LinkedIn post
-- `generate_voiceover.py` — Voiceover MP3
 - `generate_image.py` — Images
+- Voiceover MP3 — superseded by `tools/video-studio/generate_narration.py` (Cartesia TTS,
+  multi-speaker, per-line timing); `generate_voiceover.py` (edge-tts) was removed.
 
 ### Need to Build (Priority Order)
 

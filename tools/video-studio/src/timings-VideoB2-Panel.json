@@ -1,0 +1,53 @@
+{
+  "id": "VideoB2PanelV2",
+  "audio": "panel-v2-FINAL.wav",
+  "total": 162.5,
+  "fps": 30,
+  "scenes": [
+    {
+      "key": "page_01",
+      "start": 0.0,
+      "end": 16.785
+    },
+    {
+      "key": "page_02",
+      "start": 16.785,
+      "end": 39.665
+    },
+    {
+      "key": "page_03",
+      "start": 39.665,
+      "end": 57.77
+    },
+    {
+      "key": "page_04",
+      "start": 57.77,
+      "end": 81.655
+    },
+    {
+      "key": "page_05",
+      "start": 81.655,
+      "end": 96.49
+    },
+    {
+      "key": "page_06",
+      "start": 96.49,
+      "end": 109.86
+    },
+    {
+      "key": "page_07",
+      "start": 109.86,
+      "end": 130.57
+    },
+    {
+      "key": "page_08",
+      "start": 130.57,
+      "end": 156.735
+    },
+    {
+      "key": "cta",
+      "start": 156.735,
+      "end": 162.5
+    }
+  ]
+}

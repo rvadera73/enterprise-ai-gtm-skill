@@ -1,0 +1,17 @@
+{
+  "videoc_path": "out/videoC.mp4",
+  "narration_wav": "master_narration.wav",
+  "narration_timing_json": "narration_timing.json",
+  "output_path": "video3_FINAL.mp4",
+  "segments": [
+    {"kind": "graphic", "start": 0.0, "end": 16.275, "target_duration": 16.275},
+    {"kind": "graphic", "start": 16.275, "end": 44.835, "target_duration": 28.56},
+    {"kind": "live", "src": "/tmp/video3beats/video3-live-beats/beat2.webm", "target_duration": 35.5},
+    {"kind": "live_partial", "src": "/tmp/video3beats/video3-live-beats/beat3.webm", "target_duration": 20.937, "full_duration": 31.649},
+    {"kind": "graphic", "start": 44.835, "end": 55.547, "target_duration": 10.712},
+    {"kind": "live", "src": "/tmp/video3beats/video3-live-beats/beat4.webm", "target_duration": 19.658},
+    {"kind": "live", "src": "/tmp/video3beats/video3-live-beats/beat5.webm", "target_duration": 19.0},
+    {"kind": "live", "src": "/tmp/video3beats/video3-live-beats/beat7.webm", "target_duration": 20.0},
+    {"kind": "graphic", "start": 55.547, "end": 75.301, "target_duration": 19.754}
+  ]
+}
