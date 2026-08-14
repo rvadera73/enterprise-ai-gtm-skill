@@ -1,4 +1,8 @@
-"""Generate Video 3's full narration track from the locked script
+"""SUPERSEDED for future videos by generate_narration_pipeline.py (manifest-driven,
+called by produce_video.py's `narration` stage) -- kept as Video 3's own reference
+implementation, unchanged.
+
+Generate Video 3's full narration track from the locked script
 (docs/gtm/03-video/storyboard-video3-full-tour.md, storyboard v3, 2026-08-14).
 
 Renders every line individually via Cartesia TTS (Rahul -> Sameer, Emma ->

@@ -350,7 +350,11 @@ a child view stuck on a loading spinner indefinitely. The fix was a flat post-sw
 wait (2000ms) before the next interaction — cheap, but only after the race was found
 by inspecting a hung recording, not by design. Treat any selector/dropdown/context
 switch in a recording script as a suspect boundary and verify settle time empirically
-before trusting a hold-and-hope duration.
+before trusting a hold-and-hope duration. **Preferred fix, added 2026-08-14:**
+`tools/video-studio/scripts/recording_helpers.mjs`'s `waitUntilSettled()` /
+`waitUntilSpinnerGone()` poll a real predicate instead of guessing a fixed sleep —
+copy this pattern into the product's own recording script rather than hand-rolling
+another fixed `waitForTimeout(2000)` and hoping it holds for a different app/load.
 
 **16. Absorb real-world recording overshoot as inserted silence in the audio track,
 not by re-timing the visuals to fit a fixed script.** When a live-capture beat needs
@@ -697,34 +701,59 @@ hybrid felt like a compromise between two weaker forms; it read as a single
 deliberate format once the beat-type alternation (§1's table) was treated as the
 default shape rather than a special case.
 
-### 13.2 The voice/screen sync procedure — do this in this order, every time
-This generalizes what had been ad hoc across three separate timing-patch scripts on
-Video 3. As a repeatable procedure:
+### 13.2 The voice/screen sync procedure — now a real tool, not a manual sequence
+**Changed 2026-08-14.** This used to be six manual steps here, re-derived and
+re-typed as separate one-off scripts for Video 3 (three separate timing-patch
+scripts, run by hand in the right order, remembering the rules from this prose each
+time). That's exactly the kind of process a tool should own, not a document —
+`tools/video-studio/produce_video.py` now runs it as an enforced, staged pipeline:
 
-1. **Generate the full narration as one continuous take first** (§4 rule 1), and get
-   its real per-line `[start, end]` timestamps out of the TTS call directly — don't
-   derive timing from a transcript tool (Whisper mangles brand names, §2 step 3).
-2. **Map every beat's narration window directly onto either a Remotion composition
-   duration (explain beat) or a live-capture recording target (proof beat).** The
-   narration timing file is the single source of truth both sides read from — never
-   hand-tune a visual duration independent of it.
-3. **Treat every proof beat's narration window as a target for the recording script
-   to hit, not a guarantee it will.** Real page loads and settle-waits (§4 rule 15)
-   are load-bearing time that the narration-derived window may not have budgeted for.
-4. **Verify each recorded/rendered segment against its target duration AND at a
-   mid-window checkpoint before accepting it** (§4 rule 14) — run
-   `tools/video-studio/scripts/verify_stitch_plan.py` (new, this session) against the
-   full segment manifest before assembling anything. It probes every segment's real
-   duration against its planned target and flags mismatches mechanically; it does
-   NOT replace the manual mid-window frame-sample check, which is the only thing that
-   catches "technically the right length, but stuck on a spinner for most of it."
-5. **If a proof beat needs more real time than its narration window has, extend the
-   window and insert matching silence into the narration WAV at that beat's boundary**
-   (§4 rule 16), tracked against a pre-approved slack budget, rather than compressing
-   the recording or letting drift accumulate unaudited.
-6. **Run a stitch-plan verification pass (step 4's tool) immediately before the final
-   concatenation**, not just once during recording — this is what would have caught
-   the stale-file bug (§4 rule 17) mechanically instead of after a failed assembly.
+```
+python produce_video.py <spec.json> --stage narration       # one continuous take,
+                                                              # real per-line timestamps
+                                                              # from the TTS call directly
+                                                              # -- never a transcript tool
+                                                              # (Whisper mangles brand names)
+python produce_video.py <spec.json> --stage render           # explain beats
+python produce_video.py <spec.json> --stage await-recording  # writes proof-beat targets,
+                                                              # stops (recording runs in the
+                                                              # PRODUCT's own repo)
+python produce_video.py <spec.json> --stage verify [--override-qa-suspect]
+                                                              # duration check (real FAIL
+                                                              # always blocks) + a multi-
+                                                              # checkpoint stuck-frame
+                                                              # heuristic (a SUSPECT flag
+                                                              # needs an explicit override,
+                                                              # never a silent skip) --
+                                                              # this is what would have
+                                                              # caught Video 3's real
+                                                              # settle-margin shortfalls
+                                                              # and its stale-file bug
+                                                              # mechanically
+python produce_video.py <spec.json> --stage stitch           # absorbs any pre-approved
+                                                              # silence-insertion slack
+                                                              # already baked into the
+                                                              # narration track
+python produce_video.py <spec.json> --stage quality-package  # hands off to §13.5 below
+```
+
+See the script's own docstring for the full `spec.json` shape. What still requires
+judgment, not mechanical execution, and stays here rather than moving into code: the
+narrative spine (§3), Rule 0 (§2 / `VIDEO-ASSET-TEMPLATES.md`), and everything in
+the numbered rules above (§4) — the orchestrator enforces the SEQUENCE and the
+blocking gates; it does not (and structurally cannot) judge whether the result is
+actually good.
+
+### 13.2a Defect → fix runbook
+A fast lookup over what's already documented, so the next video doesn't re-derive it
+from scratch by re-debugging for hours the way Video 3 did:
+
+| `verify` stage signal | Likely cause | Fix |
+|---|---|---|
+| Duration check: `MISSING FILE` | A stale/wrong temp path was recorded into the manifest | Confirm the recording script wrote to the path the manifest actually references (§4 rule 17's stale-file bug) |
+| Duration check: raw source shorter than planned trim | The recording window was too short for the real settle time | Extend the window using the pre-approved slack budget (§4 rule 16); re-record |
+| Frame QA: `SUSPECT` (near-zero first-vs-last variance) | Possibly stuck on a loading/spinner state for most of the window | Open the saved frames first — a legitimately static demo beat can also score low; if genuinely stuck, add/extend a `waitUntilSettled()`/`waitUntilSpinnerGone()` call (§4 rule 15) rather than just extending the window again |
+| A corner of an explain-beat graphic looks watermarked/off | Reused a NotebookLM-exported slide instead of a native component | Prefer §2.1's native-Remotion-component default; if a NotebookLM slide is still in use, run `clean_notebooklm_slides.py` |
 
 ### 13.3 Slide/graphic-beat mechanism — see §2.1
 The native-Remotion-component default for explain beats (§2.1) is the direct fix for
@@ -777,3 +806,23 @@ tolerance 0.15s) plus a total-duration check against the narration's own total. 
 NOT replace the manual mid-window frame-sample check (§4 rule 14) — duration matching
 a target says nothing about whether the middle of that duration is actually usable.
 Usage: `python verify_stitch_plan.py <manifest.json> <narration_timing.json>`.
+
+### 13.5 Agent-driven quality review — the check no heuristic in this pipeline can do
+**Added 2026-08-14.** Everything above this point (duration matching, the stuck-frame
+heuristic) is mechanical, and mechanical checks structurally cannot answer the actual
+question that matters: does this video feel engaging and professional, not just
+technically correct? A pixel-variance threshold has no opinion on whether the BLUF
+lands, whether the pacing drags, or whether the whole thing reads as an AI-generated
+first draft instead of something "a quality video publishing shop" would ship (§12's
+own bar, from the Video 2 editorial pass).
+
+`produce_video.py`'s `quality-package` stage is the handoff to this check: it extracts
+a frame at every beat's start from the FINAL stitched video and writes
+`review-prompt.md`, embedding the actual narration script and a condensed version of
+this doc's creative checklist (the BLUF compression test §13.4, the narrative spine
+§3, brand-token consistency, the §12 bar). An agent — either inline in the producing
+session or a dedicated review call — reads that package and reports SPECIFIC findings
+tied to a beat/timestamp, not a bare pass/fail. This is agent-*scored*, not agent-
+*gated*: unlike the `verify` stage's mechanical FAIL/SUSPECT, there is no automatic
+block on a subjective quality score — the point is surfacing concrete, actionable
+findings before a video ships, not pretending a judgment call can be a checkbox.

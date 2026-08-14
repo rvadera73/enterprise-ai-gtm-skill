@@ -65,7 +65,12 @@ def main():
         print(__doc__)
         sys.exit(1)
 
-    manifest = json.loads(pathlib.Path(sys.argv[1]).read_text())
+    manifest_data = json.loads(pathlib.Path(sys.argv[1]).read_text())
+    # Accept either a bare segment list (this script's original shape) or the
+    # richer object shape stitch_pipeline.py's manifest uses ({"segments": [...],
+    # "narration_timing_json": ..., ...}) -- both scripts should share one
+    # manifest format now that produce_video.py drives them from the same file.
+    manifest = manifest_data["segments"] if isinstance(manifest_data, dict) else manifest_data
     narration = json.loads(pathlib.Path(sys.argv[2]).read_text())
     ffprobe = find_ffprobe()
 
