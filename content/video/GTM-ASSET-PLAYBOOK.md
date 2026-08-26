@@ -109,7 +109,27 @@ bounded claims, benefit as consequence, ≤8 words per header.
 The one-pager is also the **canonical source for diagram structure** — videos should
 inherit it rather than invent new geometry.
 
-## 7. Still open
+## 7. Validate the render — an independent listener, not just your own ffmpeg checks
+
+Run `tools/video-studio/descript_validate.py --video <final.mp4> --script <narration_timing.json>`
+on every finished render, before calling it done. It uploads the real video to Descript
+(API, Free tier — costs a few minutes of the 60/month free allowance, ~$0), gets an
+independent transcript back, and diffs it word-for-word against the script that actually
+generated the narration. This catches a class of bug nothing else in the pipeline can:
+whether the TTS voice's pronunciation of something is genuinely *ambiguous to a listener*,
+not just present in the audio. First real run caught exactly this — "RiskModelForgeIQ"
+came back independently transcribed as "Risk Model 4 IQ" / "Risk Model For IQ" across two
+separate passes, meaning that word doesn't reliably land, even though the audio itself
+plays back fine mechanically (no clipping, no silence, no click). ffmpeg-based checks
+(silence/click detection) verify the audio is *structurally* correct; this verifies it's
+*understandable*. Run both — neither replaces the other.
+
+Read the script's own docstring before touching the API by hand — it documents two real,
+undocumented API quirks (the auth token format, and that a composition must be created in
+the same call as the media upload or transcript export silently returns empty) found the
+hard way, so you don't have to rediscover them.
+
+## 8. Still open
 
 - **No measurement loop.** We never learn which hook worked; distribution tracks leads
   but nothing feeds back into the next script.
