@@ -84,8 +84,10 @@ SCRIPT = [
 
 
 def synth_line(text: str, speaker: str, out_path: pathlib.Path) -> None:
+    # sonic-2 sunsets 2026-10-20 (Cartesia notice); moved to sonic-3.5,
+    # confirmed to work with both voice IDs below before switching.
     chunks = client.tts.bytes(
-        model_id="sonic-2",
+        model_id="sonic-3.5",
         transcript=text,
         voice={"mode": "id", "id": VOICES[speaker]},
         output_format={"container": "wav", "encoding": "pcm_s16le", "sample_rate": 44100},
