@@ -20,6 +20,7 @@ master_narration.wav/narration_timing.json so neither overwrites the other):
 import json
 import os
 import pathlib
+import struct
 import wave
 
 from cartesia import Cartesia
@@ -99,6 +100,25 @@ def wav_duration_sec(path: pathlib.Path) -> float:
         return w.getnframes() / float(w.getframerate())
 
 
+FADE_MS = 8  # short enough to be inaudible, long enough to kill the click
+
+
+def fade_edges(frames: bytes, framerate: int) -> bytes:
+    """Ramp each line's clip to/from zero at its head/tail before it gets
+    spliced against silence padding. Cartesia's raw TTS output starts and
+    ends mid-waveform (never at a zero crossing), so pasting it directly
+    against silence is a hard sample-level discontinuity -- audible as a
+    click at every single line boundary (confirmed: found identical-
+    magnitude jumps at all 28 line-start timestamps in a prior render)."""
+    samples = list(struct.unpack(f"<{len(frames)//2}h", frames))
+    n = min(int(framerate * FADE_MS / 1000), len(samples) // 2)
+    for i in range(n):
+        g = i / n
+        samples[i] = int(samples[i] * g)
+        samples[-(i + 1)] = int(samples[-(i + 1)] * g)
+    return struct.pack(f"<{len(samples)}h", *samples)
+
+
 def main() -> None:
     timing_lines = []
     cursor = 0.0
@@ -123,6 +143,7 @@ def main() -> None:
         data_bytes = out_path.stat().st_size - 44  # standard WAV header size
         n_frames = data_bytes // frame_size
         frames = out_path.read_bytes()[44:44 + n_frames * frame_size]
+        frames = fade_edges(frames, framerate)
         duration = n_frames / float(framerate)
 
         start = cursor
