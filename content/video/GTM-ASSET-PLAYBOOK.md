@@ -109,7 +109,44 @@ bounded claims, benefit as consequence, ≤8 words per header.
 The one-pager is also the **canonical source for diagram structure** — videos should
 inherit it rather than invent new geometry.
 
-## 7. Validate the render — an independent listener, not just your own ffmpeg checks
+## 7. Podcast-style format — conversational structure, not informal tone
+
+A "podcast style" demo means the two-voice dialogue's *structure* moves closer to a real
+professional conversation — not that the register gets casual. **These are independent
+choices; don't conflate them.** Correction logged 2026-08-26: the first pass at this
+reached for informal markers (laughter, casual reactions) when what was actually wanted
+was structural — same mistake pattern as the dialogue-naturalness over-correction below
+(§4), just on a new axis (tone vs. structure this time, not length).
+
+**What actually changes, structurally:**
+- Turn-taking builds on the other speaker's point rather than strictly alternating
+  question → answer. A line can extend, qualify, or add a consequence to what the other
+  speaker just said, the way two informed people actually discuss something — not two
+  people taking scripted turns at a podium.
+- Sentence-length variety (already required by §4) does more work here — the "explaining"
+  voice's longer lines should sound like reasoned argument, not a lecture; the reacting
+  voice's short lines should sound like genuine engagement, not a cue for the next line.
+- Still governed by every other rule in this doc: one continuous narration take, ONE
+  concrete example threaded through (§2), no feature list, benefit as consequence.
+
+**What does NOT change:** register stays professional throughout. No slang, no
+`[laughter]` tags, no exclamatory/casual emotion words. If Cartesia's emotion tags
+(`<emotion value="..."/>`, see below) are used at all, keep to professional-register
+options — `confident`, `determined`, `curious`, `contemplative` — never
+`excited`/`amazed`/`euphoric`/`flirtatious` and never the `[laughter]` bracket tag.
+
+**Sonic-3.5 delivery controls, verified against our actual voices (Sameer/Emma), not
+just Cartesia's docs (2026-08-26):** `<speed ratio="0.85"/>`, `<volume ratio="1.2"/>`,
+and `<emotion value="..."/>` tags all produce a real, measurable effect on both voices —
+confirmed via output duration changes, not just "the API call didn't error." **The effect
+is real but muted** — Cartesia's docs say emotion tags work best on 8 specific voices
+(Leo, Jace, Kyle, Gavin, Maya, Tessa, Dana, Marian), which are not the voices this
+pipeline uses, and the measured effect size on Sameer/Emma was smaller than the tag's
+nominal setting would suggest. Treat these as a minor emphasis lever on specific lines
+(e.g. a touch slower on a landing line), not a primary quality driver — script writing
+(§2-4) still does most of the work, same as it always has.
+
+## 8. Validate the render — an independent listener, not just your own ffmpeg checks
 
 Run `tools/video-studio/descript_validate.py --video <final.mp4> --script <narration_timing.json>`
 on every finished render, before calling it done. It uploads the real video to Descript
@@ -129,7 +166,7 @@ undocumented API quirks (the auth token format, and that a composition must be c
 the same call as the media upload or transcript export silently returns empty) found the
 hard way, so you don't have to rediscover them.
 
-## 8. Still open
+## 9. Still open
 
 - **No measurement loop.** We never learn which hook worked; distribution tracks leads
   but nothing feeds back into the next script.
