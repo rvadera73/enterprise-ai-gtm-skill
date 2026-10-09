@@ -1,63 +1,19 @@
 {
   "id": "VideoB",
-  "audio": "narration-VideoB.mp3",
-  "total": 96.19,
+  "audio": "narration-VideoB-myvoice.wav",
+  "total": 78.22,
   "fps": 30,
   "scenes": [
-    {
-      "key": "stat",
-      "start": 0,
-      "end": 5.9559999999999995
-    },
-    {
-      "key": "why",
-      "start": 5.9559999999999995,
-      "end": 18.775
-    },
-    {
-      "key": "callback",
-      "start": 18.775,
-      "end": 29.732
-    },
-    {
-      "key": "setup",
-      "start": 29.732,
-      "end": 35.408
-    },
-    {
-      "key": "hook",
-      "start": 35.408,
-      "end": 40.982
-    },
-    {
-      "key": "ops",
-      "start": 40.982,
-      "end": 50.165
-    },
-    {
-      "key": "review",
-      "start": 50.165,
-      "end": 62.64
-    },
-    {
-      "key": "insight",
-      "start": 62.64,
-      "end": 66.747
-    },
-    {
-      "key": "analytics",
-      "start": 66.747,
-      "end": 81.403
-    },
-    {
-      "key": "shared",
-      "start": 81.403,
-      "end": 88.52
-    },
-    {
-      "key": "cta",
-      "start": 88.52,
-      "end": 96.19
-    }
+    { "key": "stat", "start": 0, "end": 4.98 },
+    { "key": "why", "start": 4.98, "end": 15.04 },
+    { "key": "callback", "start": 15.04, "end": 24.46 },
+    { "key": "setup", "start": 24.46, "end": 29.6 },
+    { "key": "hook", "start": 29.6, "end": 33.68 },
+    { "key": "ops", "start": 33.68, "end": 40.92 },
+    { "key": "review", "start": 40.92, "end": 51.06 },
+    { "key": "insight", "start": 51.06, "end": 54.72 },
+    { "key": "analytics", "start": 54.72, "end": 66.74 },
+    { "key": "shared", "start": 66.74, "end": 72.02 },
+    { "key": "cta", "start": 72.02, "end": 78.22 }
   ]
 }

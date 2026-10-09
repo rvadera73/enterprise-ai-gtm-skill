@@ -21,23 +21,46 @@ const W = 1080;
  * than slow the video down — slow-motion UI reads as broken.
  */
 
-// source capture geometry
-const SRC_W = 1280, SRC_H = 1400;
-const CROP_TOP = 58, CROP_BOTTOM = 950;          // trim page chrome + footer panel
-const SCALE = W / SRC_W;                          // 0.84 — keeps UI text legible
-const VIEW_H = (CROP_BOTTOM - CROP_TOP) * SCALE;  // ~752
+// source capture geometry — 2026-07-27 re-recorded at 120% browser zoom, landscape
+// 1440x900 (was portrait 1280x1400), FULL PAGE (sticky header down through the
+// "How This Demo Works" footer) — the old crop only trimmed horizontally, so a still
+// frame preview showed header+footer bleeding in around the actual chat panel.
+// Crop both axes this time: trim the page header/footer vertically, and trim outer
+// margins horizontally, biased toward the chat column per the original
+// post-production note ("keep the chat column centred in the crop").
+const SRC_W = 1440, SRC_H = 900;
+// Measured directly from a raw extracted frame (2026-07-27): header ends ~110px,
+// footer starts ~545px in the 900px-tall capture.
+const CROP_TOP = 100, CROP_BOTTOM = 620;          // trim sticky header + footer band
+// Re-measured 2026-07-27 against the fixed re-recording (real answers now visible,
+// not an empty panel): the chat card's actual left edge sits ~x=425, right edge
+// (send button) ~x=1150 — the old 620-1367 window was shifted too far right,
+// clipping answer text on the left while leaving a dead gray band past x=1150 on
+// the right (same 747px width, just repositioned to match the real content).
+const CROP_LEFT = 400, CROP_RIGHT = 1147;         // trim outer margins, bias toward chat column
+const VIEW_H = 752;                                // unchanged — keeps caption band spacing consistent
+const SCALE = VIEW_H / (CROP_BOTTOM - CROP_TOP);   // ~1.09
+const VIEW_W = (CROP_RIGHT - CROP_LEFT) * SCALE;   // ~1080
 const VIEW_Y = 172;
 
 const Screen = ({ children }) => (
   <div style={{
-    position: 'absolute', left: 0, top: VIEW_Y, width: W, height: VIEW_H,
+    position: 'absolute', left: (W - VIEW_W) / 2, top: VIEW_Y, width: VIEW_W, height: VIEW_H,
     overflow: 'hidden', background: '#EEF2F6',
   }}>
-    <div style={{ position: 'absolute', left: 0, top: -CROP_TOP * SCALE, width: W, height: SRC_H * SCALE }}>
+    <div style={{ position: 'absolute', left: -CROP_LEFT * SCALE, top: -CROP_TOP * SCALE, width: SRC_W * SCALE, height: SRC_H * SCALE }}>
       {children}
     </div>
   </div>
 );
+
+// This capture is a single continuous ~78s recording, timeline-synced beat-for-beat
+// to this same narration — unlike the original 28.8s capture (which needed short
+// live bursts + held stills to cover a 98.8s edit-TTS narration), so no Still/
+// fragmented-Sequence hack is needed. CAPTURE_OFFSET skips the capture's own
+// role-selector pre-roll (0-27.7s in the recording) so demoStart in the composite
+// lines up with the moment Docket Clerk actually gets clicked in the footage.
+const CAPTURE_OFFSET = 27.7;
 
 const Vid = ({ fromSec }) => (
   <OffthreadVideo src={staticFile('demo-capture.webm')} startFrom={Math.round(fromSec * 30)}
@@ -165,17 +188,9 @@ export const VideoB = () => {
       {inDemo && (
         <>
           <Screen>
-            <Sequence from={F(demoStart)} durationInFrames={F(2.9)}><Vid fromSec={0} /></Sequence>
-            <Sequence from={F(demoStart + 2.9)} durationInFrames={F(S.ops.start - demoStart - 2.9)}><Still name="ops" /></Sequence>
-
-            <Sequence from={F(S.ops.start)} durationInFrames={F(5.2)}><Vid fromSec={2.9} /></Sequence>
-            <Sequence from={F(S.ops.start + 5.2)} durationInFrames={F(S.review.start - S.ops.start - 5.2)}><Still name="ops" /></Sequence>
-
-            <Sequence from={F(S.review.start)} durationInFrames={F(5.6)}><Vid fromSec={8.1} /></Sequence>
-            <Sequence from={F(S.review.start + 5.6)} durationInFrames={F(S.analytics.start - S.review.start - 5.6)}><Still name="review" /></Sequence>
-
-            <Sequence from={F(S.analytics.start)} durationInFrames={F(11.2)}><Vid fromSec={13.7} /></Sequence>
-            <Sequence from={F(S.analytics.start + 11.2)} durationInFrames={F(demoEnd - S.analytics.start - 11.2 + 1)}><Still name="chart" /></Sequence>
+            <Sequence from={F(demoStart)} durationInFrames={F(demoEnd - demoStart)}>
+              <Vid fromSec={CAPTURE_OFFSET} />
+            </Sequence>
           </Screen>
 
           {/* sketched frame around the screen */}

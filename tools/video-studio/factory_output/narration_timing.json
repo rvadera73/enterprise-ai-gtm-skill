@@ -1,0 +1,151 @@
+{
+  "total_duration_sec": 153.926,
+  "lines": [
+    {
+      "index": 0,
+      "beat": "1",
+      "speaker": "DevSecOps",
+      "text": "A developer hands over a repository and a Dockerfile, and the AI-Assisted Software Factory builds and deploys a real multi-cloud pipeline from that. You'd normally have a team writing that pipeline by hand \u2014 this doesn't.",
+      "start": 0.0,
+      "end": 11.52
+    },
+    {
+      "index": 1,
+      "beat": "1",
+      "speaker": "Developer",
+      "text": "That's a lot riding on just a repo and a Dockerfile \u2014 most multi-cloud pipelines I've dealt with take a dedicated infrastructure team two sprints just to stand up and debug.",
+      "start": 11.97,
+      "end": 21.251
+    },
+    {
+      "index": 2,
+      "beat": "2",
+      "speaker": "DevSecOps",
+      "text": "Right, and that's exactly the assumption people bring in \u2014 that something like this means more upfront work, new tooling, a new process to learn.",
+      "start": 21.951,
+      "end": 29.711
+    },
+    {
+      "index": 3,
+      "beat": "2",
+      "speaker": "Developer",
+      "text": "That's usually how it goes, yeah \u2014 new AI angle, same old rewrite-everything tax.",
+      "start": 30.161,
+      "end": 34.802
+    },
+    {
+      "index": 4,
+      "beat": "3",
+      "speaker": "Developer",
+      "text": "Because normally that's the actual job, right \u2014 you design the service, sure, but then you're also the one writing the CI config, the deploy scripts, wiring up whatever infrastructure it needs. Half your sprint disappears into that before the thing even ships.",
+      "start": 35.502,
+      "end": 49.822
+    },
+    {
+      "index": 5,
+      "beat": "3",
+      "speaker": "DevSecOps",
+      "text": "And now that whole second half isn't the developer's anymore. They design the architecture, package it properly in Docker, and the factory takes over build and deployment from there.",
+      "start": 50.272,
+      "end": 59.232
+    },
+    {
+      "index": 6,
+      "beat": "4",
+      "speaker": "DevSecOps",
+      "text": "Nobody's hand-typing this from scratch either \u2014 you point it at the repo, say what you're deploying, and it fills this in itself. If it can't tell something, it asks, and whatever comes back gets written straight into this.",
+      "start": 59.932,
+      "end": 71.533
+    },
+    {
+      "index": 7,
+      "beat": "4",
+      "speaker": "Developer",
+      "text": "So if my config surface just shrank to one Dockerfile \u2014 what happens when a deployment actually fails, am I the one debugging the factory's generated pipeline, or is that shielded too?",
+      "start": 71.983,
+      "end": 82.623
+    },
+    {
+      "index": 8,
+      "beat": "4",
+      "speaker": "DevSecOps",
+      "text": "Not you first, no \u2014 a failure routes back to the AI to diagnose and fix, same as any other failed gate. You only get pulled in for something that's actually your call \u2014 a breaking schema change, say, not a flaky retry.",
+      "start": 83.073,
+      "end": 96.913
+    },
+    {
+      "index": 9,
+      "beat": "5",
+      "speaker": "DevSecOps",
+      "text": "Which is why a developer's actual week goes back to the service itself \u2014 the architecture, the design \u2014 not a Terraform diff, not a deploy script.",
+      "start": 97.613,
+      "end": 105.774
+    },
+    {
+      "index": 10,
+      "beat": "5",
+      "speaker": "Developer",
+      "text": "And this isn't a thought experiment sitting in a deck somewhere \u2014 it's running for real, on IACP-2.1. That's the part that actually matters to me, honestly, versus a proposal.",
+      "start": 106.224,
+      "end": 118.624
+    },
+    {
+      "index": 11,
+      "beat": "5",
+      "speaker": "DevSecOps",
+      "text": "It is \u2014 and the AI-Assisted Software Factory isn't stopping there. CBP Sentry's next, in the coming weeks \u2014 same factory model, same configuration structure, just pointed at a new repository. And it won't stay GitHub-only either \u2014 Jenkins and GitLab are next on the same model, just a different CI underneath.",
+      "start": 119.074,
+      "end": 137.075
+    },
+    {
+      "index": 12,
+      "beat": "6",
+      "speaker": "DevSecOps",
+      "text": "A repository, a working Dockerfile, and the AI-Assisted Software Factory takes it the rest of the way.",
+      "start": 137.775,
+      "end": 143.135
+    },
+    {
+      "index": 13,
+      "beat": "6",
+      "speaker": "Developer",
+      "text": "Fair trade \u2014 as long as that Dockerfile's actually right.",
+      "start": 143.585,
+      "end": 146.785
+    },
+    {
+      "index": 14,
+      "beat": "6",
+      "speaker": "DevSecOps",
+      "text": "That's genuinely the only part still on you. Two sprints of infrastructure work, or the service you actually wanted to ship?",
+      "start": 147.235,
+      "end": 153.476
+    }
+  ],
+  "beats": {
+    "1": {
+      "start": 0.0,
+      "end": 21.251
+    },
+    "2": {
+      "start": 21.951,
+      "end": 34.802
+    },
+    "3": {
+      "start": 35.502,
+      "end": 59.232
+    },
+    "4": {
+      "start": 59.932,
+      "end": 96.913
+    },
+    "5": {
+      "start": 97.613,
+      "end": 137.075
+    },
+    "6": {
+      "start": 137.775,
+      "end": 153.476
+    }
+  }
+}

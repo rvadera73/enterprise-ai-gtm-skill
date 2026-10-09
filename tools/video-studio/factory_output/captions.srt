@@ -1,0 +1,60 @@
+1
+00:00:00,000 --> 00:00:11,520
+DevSecOps: A developer hands over a repository and a Dockerfile, and the AI-Assisted Software Factory builds and deploys a real multi-cloud pipeline from that. You'd normally have a team writing that pipeline by hand — this doesn't.
+
+2
+00:00:11,970 --> 00:00:21,251
+Developer: That's a lot riding on just a repo and a Dockerfile — most multi-cloud pipelines I've dealt with take a dedicated infrastructure team two sprints just to stand up and debug.
+
+3
+00:00:21,951 --> 00:00:29,711
+DevSecOps: Right, and that's exactly the assumption people bring in — that something like this means more upfront work, new tooling, a new process to learn.
+
+4
+00:00:30,161 --> 00:00:34,802
+Developer: That's usually how it goes, yeah — new AI angle, same old rewrite-everything tax.
+
+5
+00:00:35,502 --> 00:00:49,822
+Developer: Because normally that's the actual job, right — you design the service, sure, but then you're also the one writing the CI config, the deploy scripts, wiring up whatever infrastructure it needs. Half your sprint disappears into that before the thing even ships.
+
+6
+00:00:50,272 --> 00:00:59,232
+DevSecOps: And now that whole second half isn't the developer's anymore. They design the architecture, package it properly in Docker, and the factory takes over build and deployment from there.
+
+7
+00:00:59,932 --> 00:01:11,533
+DevSecOps: Nobody's hand-typing this from scratch either — you point it at the repo, say what you're deploying, and it fills this in itself. If it can't tell something, it asks, and whatever comes back gets written straight into this.
+
+8
+00:01:11,983 --> 00:01:22,623
+Developer: So if my config surface just shrank to one Dockerfile — what happens when a deployment actually fails, am I the one debugging the factory's generated pipeline, or is that shielded too?
+
+9
+00:01:23,073 --> 00:01:36,913
+DevSecOps: Not you first, no — a failure routes back to the AI to diagnose and fix, same as any other failed gate. You only get pulled in for something that's actually your call — a breaking schema change, say, not a flaky retry.
+
+10
+00:01:37,613 --> 00:01:45,774
+DevSecOps: Which is why a developer's actual week goes back to the service itself — the architecture, the design — not a Terraform diff, not a deploy script.
+
+11
+00:01:46,224 --> 00:01:58,624
+Developer: And this isn't a thought experiment sitting in a deck somewhere — it's running for real, on IACP-2.1. That's the part that actually matters to me, honestly, versus a proposal.
+
+12
+00:01:59,074 --> 00:02:17,075
+DevSecOps: It is — and the AI-Assisted Software Factory isn't stopping there. CBP Sentry's next, in the coming weeks — same factory model, same configuration structure, just pointed at a new repository. And it won't stay GitHub-only either — Jenkins and GitLab are next on the same model, just a different CI underneath.
+
+13
+00:02:17,775 --> 00:02:23,135
+DevSecOps: A repository, a working Dockerfile, and the AI-Assisted Software Factory takes it the rest of the way.
+
+14
+00:02:23,585 --> 00:02:26,785
+Developer: Fair trade — as long as that Dockerfile's actually right.
+
+15
+00:02:27,235 --> 00:02:33,476
+DevSecOps: That's genuinely the only part still on you. Two sprints of infrastructure work, or the service you actually wanted to ship?
+

@@ -33,6 +33,7 @@ Thumbs.db
 out/
 tools/*/out/
 tools/*/.venv/
+tools/*/.venv-*/
 public/narration.mp3
 public/narration.vtt
 src/timings.json

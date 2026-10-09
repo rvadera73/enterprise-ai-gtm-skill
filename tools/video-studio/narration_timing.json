@@ -1,0 +1,373 @@
+{
+  "total_duration_sec": 190.396,
+  "lines": [
+    {
+      "index": 0,
+      "beat": "0",
+      "speaker": "Emma",
+      "text": "Wait. Same case?",
+      "start": 0.0,
+      "end": 1.579
+    },
+    {
+      "index": 1,
+      "beat": "0",
+      "speaker": "Rahul",
+      "text": "Same case. Same data. Two independently trained models \u2014 25.09 versus 96.95.",
+      "start": 1.779,
+      "end": 9.07
+    },
+    {
+      "index": 2,
+      "beat": "0",
+      "speaker": "Emma",
+      "text": "So which one drives the decision?",
+      "start": 9.67,
+      "end": 11.481
+    },
+    {
+      "index": 3,
+      "beat": "0",
+      "speaker": "Rahul",
+      "text": "Neither, by itself. The disagreement becomes a governed signal.",
+      "start": 11.681,
+      "end": 15.675
+    },
+    {
+      "index": 4,
+      "beat": "1",
+      "speaker": "Rahul",
+      "text": "So what happens underneath that decision?",
+      "start": 16.275,
+      "end": 18.597
+    },
+    {
+      "index": 5,
+      "beat": "1",
+      "speaker": "Rahul",
+      "text": "The model is only one part of it. Signal Intelligence. Risk Intelligence. Decision Governance.",
+      "start": 19.597,
+      "end": 27.12
+    },
+    {
+      "index": 6,
+      "beat": "1",
+      "speaker": "Rahul",
+      "text": "Together, they form RiskModelForgeIQ's Decision Intelligence Layer.",
+      "start": 27.72,
+      "end": 31.11
+    },
+    {
+      "index": 7,
+      "beat": "1",
+      "speaker": "Emma",
+      "text": "So this is more than MLOps?",
+      "start": 31.41,
+      "end": 33.314
+    },
+    {
+      "index": 8,
+      "beat": "1",
+      "speaker": "Rahul",
+      "text": "Exactly. MLOps manages the model. DecisionOps governs what happens when the model actually makes a decision \u2014 the rules, the versions, human review, explainability, the evidence behind it.",
+      "start": 33.514,
+      "end": 44.335
+    },
+    {
+      "index": 9,
+      "beat": "2",
+      "speaker": "Emma",
+      "text": "Why are they so different?",
+      "start": 44.835,
+      "end": 46.228
+    },
+    {
+      "index": 10,
+      "beat": "2",
+      "speaker": "Rahul",
+      "text": "The champion sees this case as relatively routine. The challenger sees something materially different.",
+      "start": 46.428,
+      "end": 51.258
+    },
+    {
+      "index": 11,
+      "beat": "2",
+      "speaker": "Rahul",
+      "text": "RiskModelForgeIQ doesn't hide that disagreement behind a blended score. It makes the disagreement operational.",
+      "start": 51.858,
+      "end": 57.802
+    },
+    {
+      "index": 12,
+      "beat": "2",
+      "speaker": null,
+      "text": "__VISUAL_71.86_POINT_DISAGREEMENT__",
+      "start": 58.102,
+      "end": 58.102
+    },
+    {
+      "index": 13,
+      "beat": "2",
+      "speaker": null,
+      "text": "__VISUAL_HUMAN_REVIEW_REQUIRED__",
+      "start": 58.702,
+      "end": 58.702
+    },
+    {
+      "index": 14,
+      "beat": "2",
+      "speaker": "Emma",
+      "text": "So the system doesn't pick a winner?",
+      "start": 59.302,
+      "end": 60.928
+    },
+    {
+      "index": 15,
+      "beat": "2",
+      "speaker": "Rahul",
+      "text": "Right. When the models disagree this sharply, a human does.",
+      "start": 61.128,
+      "end": 65.446
+    },
+    {
+      "index": 16,
+      "beat": "2",
+      "speaker": "Rahul",
+      "text": "We don't stop at explaining the score. We can trace the decision back through the model, the contributing signal, and the underlying evidence.",
+      "start": 65.846,
+      "end": 72.766
+    },
+    {
+      "index": 17,
+      "beat": "2",
+      "speaker": null,
+      "text": "__VISUAL_DECISION_SCORE_RULE_FEATURE_SOURCE__",
+      "start": 73.266,
+      "end": 73.266
+    },
+    {
+      "index": 18,
+      "beat": "2",
+      "speaker": "Rahul",
+      "text": "Real Medicare Part B claims, peer-grouped by specialty and region \u2014 not a synthetic example built to make a point.",
+      "start": 73.566,
+      "end": 79.835
+    },
+    {
+      "index": 19,
+      "beat": "3",
+      "speaker": "Emma",
+      "text": "What about the rules underneath the models \u2014 are those just hardcoded somewhere?",
+      "start": 80.335,
+      "end": 84.654
+    },
+    {
+      "index": 20,
+      "beat": "3",
+      "speaker": "Rahul",
+      "text": "The rule changes. The system creates a new version. The previous version is frozen.",
+      "start": 84.854,
+      "end": 89.777
+    },
+    {
+      "index": 21,
+      "beat": "3",
+      "speaker": "Rahul",
+      "text": "If the change doesn't perform, rollback is one switch.",
+      "start": 90.377,
+      "end": 93.442
+    },
+    {
+      "index": 22,
+      "beat": "3",
+      "speaker": "Rahul",
+      "text": "Every historical decision still points to the version that made it.",
+      "start": 94.042,
+      "end": 97.386
+    },
+    {
+      "index": 23,
+      "beat": "3",
+      "speaker": "Emma",
+      "text": "Did that actually matter?",
+      "start": 97.686,
+      "end": 98.986
+    },
+    {
+      "index": 24,
+      "beat": "3",
+      "speaker": "Rahul",
+      "text": "This is the surprising part.",
+      "start": 99.186,
+      "end": 100.672
+    },
+    {
+      "index": 25,
+      "beat": "3",
+      "speaker": null,
+      "text": "__VISUAL_2.8_TO_15.2_ESCALATION__",
+      "start": 101.272,
+      "end": 101.272
+    },
+    {
+      "index": 26,
+      "beat": "3",
+      "speaker": "Rahul",
+      "text": "Measured precision moved from 2.8 percent to 15.2 percent.",
+      "start": 103.272,
+      "end": 107.591
+    },
+    {
+      "index": 27,
+      "beat": "3",
+      "speaker": "Rahul",
+      "text": "The model didn't change.",
+      "start": 108.191,
+      "end": 109.584
+    },
+    {
+      "index": 28,
+      "beat": "3",
+      "speaker": "Rahul",
+      "text": "The decision rules did.",
+      "start": 110.184,
+      "end": 111.484
+    },
+    {
+      "index": 29,
+      "beat": "4",
+      "speaker": "Emma",
+      "text": "Six months from now, if someone asks which model made this decision \u2014 can you prove it?",
+      "start": 111.984,
+      "end": 117.232
+    },
+    {
+      "index": 30,
+      "beat": "4",
+      "speaker": "Rahul",
+      "text": "The registry answers that. Model. Version. Role. Status.",
+      "start": 117.432,
+      "end": 122.216
+    },
+    {
+      "index": 31,
+      "beat": "4",
+      "speaker": "Emma",
+      "text": "And can we reproduce the original decision?",
+      "start": 122.816,
+      "end": 125.091
+    },
+    {
+      "index": 32,
+      "beat": "4",
+      "speaker": "Rahul",
+      "text": "Yes. It stays tied to the exact model, rule, and policy version that produced it.",
+      "start": 125.291,
+      "end": 131.142
+    },
+    {
+      "index": 33,
+      "beat": "5",
+      "speaker": "Emma",
+      "text": "Does that same traceability hold model-wide, not just case by case?",
+      "start": 131.642,
+      "end": 135.311
+    },
+    {
+      "index": 34,
+      "beat": "5",
+      "speaker": "Rahul",
+      "text": "It does. Ranked by real contribution \u2014 not a black-box weight.",
+      "start": 135.511,
+      "end": 139.737
+    },
+    {
+      "index": 35,
+      "beat": "7",
+      "speaker": "Rahul",
+      "text": "The platform also watches the assumptions underneath the model.",
+      "start": 150.642,
+      "end": 153.475
+    },
+    {
+      "index": 36,
+      "beat": "7",
+      "speaker": "Rahul",
+      "text": "When the distribution of an important feature changes, the system can surface that \u2014 before performance quietly degrades.",
+      "start": 153.975,
+      "end": 160.152
+    },
+    {
+      "index": 37,
+      "beat": "7",
+      "speaker": "Rahul",
+      "text": "On this demo, that's seeded traffic, not live trade data \u2014 but it's the same mechanism that would run in production.",
+      "start": 160.752,
+      "end": 167.16
+    },
+    {
+      "index": 38,
+      "beat": "8",
+      "speaker": "Rahul",
+      "text": "These aren't separate features.",
+      "start": 170.642,
+      "end": 172.128
+    },
+    {
+      "index": 39,
+      "beat": "8",
+      "speaker": "Rahul",
+      "text": "They're one governed decision lifecycle.",
+      "start": 172.728,
+      "end": 174.54
+    },
+    {
+      "index": 40,
+      "beat": "8",
+      "speaker": "Rahul",
+      "text": "That's the difference between deploying a model and governing a decision.",
+      "start": 175.14,
+      "end": 178.483
+    },
+    {
+      "index": 41,
+      "beat": "9",
+      "speaker": "Emma",
+      "text": "So the model is only part of the architecture.",
+      "start": 178.983,
+      "end": 181.259
+    },
+    {
+      "index": 42,
+      "beat": "9",
+      "speaker": "Rahul",
+      "text": "Exactly.",
+      "start": 181.459,
+      "end": 182.202
+    },
+    {
+      "index": 43,
+      "beat": "9",
+      "speaker": "Rahul",
+      "text": "MLOps manages the model.",
+      "start": 182.802,
+      "end": 184.52
+    },
+    {
+      "index": 44,
+      "beat": "9",
+      "speaker": "Rahul",
+      "text": "DecisionOps governs the decision. That's RiskModelForgeIQ.",
+      "start": 185.12,
+      "end": 188.278
+    },
+    {
+      "index": 45,
+      "beat": "9",
+      "speaker": "Rahul",
+      "text": "The demo link is in the comments.",
+      "start": 188.678,
+      "end": 190.396
+    }
+  ]
+}

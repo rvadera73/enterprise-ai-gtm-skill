@@ -1,0 +1,6 @@
+file '/home/rahulvadera/enterprise-ai-gtm-skill/tools/video-studio/factory_output/seg1.mp4'
+file '/home/rahulvadera/enterprise-ai-gtm-skill/tools/video-studio/factory_output/seg2.mp4'
+file '/home/rahulvadera/enterprise-ai-gtm-skill/tools/video-studio/factory_output/seg3.mp4'
+file '/home/rahulvadera/enterprise-ai-gtm-skill/tools/video-studio/factory_output/seg4.mp4'
+file '/home/rahulvadera/enterprise-ai-gtm-skill/tools/video-studio/factory_output/seg5.mp4'
+file '/home/rahulvadera/enterprise-ai-gtm-skill/tools/video-studio/factory_output/seg6.mp4'

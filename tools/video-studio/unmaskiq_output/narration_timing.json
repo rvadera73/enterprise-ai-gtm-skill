@@ -1,0 +1,229 @@
+{
+  "total_duration_sec": 144.543,
+  "lines": [
+    {
+      "index": 0,
+      "beat": "0",
+      "speaker": "Emma",
+      "text": "That name right there \u2014 flagged. Government sanctions list. You can't do business with it.",
+      "start": 0.0,
+      "end": 5.805
+    },
+    {
+      "index": 1,
+      "beat": "0",
+      "speaker": "Rahul",
+      "text": "And one hop back, that same party's hiding behind a name that looks completely clean on one of thousands of shipping manifests that cross every day.",
+      "start": 6.255,
+      "end": 12.943
+    },
+    {
+      "index": 2,
+      "beat": "0",
+      "speaker": "Emma",
+      "text": "So how did anyone even find it?",
+      "start": 13.393,
+      "end": 14.972
+    },
+    {
+      "index": 3,
+      "beat": "0",
+      "speaker": "Rahul",
+      "text": "That's what this is.",
+      "start": 15.422,
+      "end": 16.445
+    },
+    {
+      "index": 4,
+      "beat": "1",
+      "speaker": "Emma",
+      "text": "So you start with the raw manifest.",
+      "start": 16.895,
+      "end": 18.938
+    },
+    {
+      "index": 5,
+      "beat": "1",
+      "speaker": "Rahul",
+      "text": "Every shipment starts as a messy file. This breaks it into its actual parts \u2014 shipper, value, vessel.",
+      "start": 19.388,
+      "end": 25.194
+    },
+    {
+      "index": 6,
+      "beat": "1",
+      "speaker": "Emma",
+      "text": "But the name on here is clean.",
+      "start": 25.644,
+      "end": 27.455
+    },
+    {
+      "index": 7,
+      "beat": "1",
+      "speaker": "Rahul",
+      "text": "The name on here is clean. That's the point \u2014 it's supposed to be. Same pipeline's built to handle claims, transactions, whatever you throw at it. Right now it's a shipment.",
+      "start": 27.905,
+      "end": 36.822
+    },
+    {
+      "index": 8,
+      "beat": "1",
+      "speaker": "Emma",
+      "text": "Okay. So what do you do with a clean name?",
+      "start": 37.272,
+      "end": 39.594
+    },
+    {
+      "index": 9,
+      "beat": "2",
+      "speaker": "Rahul",
+      "text": "You trace it. The name on the form is a starting point. We follow who's behind that name \u2014 owned by whom \u2014 and we keep going until we hit the real thing.",
+      "start": 40.044,
+      "end": 48.775
+    },
+    {
+      "index": 10,
+      "beat": "2",
+      "speaker": "Emma",
+      "text": "That's not the name on the manifest.",
+      "start": 49.225,
+      "end": 51.083
+    },
+    {
+      "index": 11,
+      "beat": "2",
+      "speaker": "Rahul",
+      "text": "One hop back. And that's the one from the beginning. Already flagged.",
+      "start": 51.533,
+      "end": 55.388
+    },
+    {
+      "index": 12,
+      "beat": "2",
+      "speaker": "Emma",
+      "text": "So if nobody traces it back\u2014",
+      "start": 56.788,
+      "end": 58.507
+    },
+    {
+      "index": 13,
+      "beat": "2",
+      "speaker": "Rahul",
+      "text": "\u2014a sanctioned party does business through a name that looks clean on paper. The sanction exists, and it does nothing.",
+      "start": 58.957,
+      "end": 64.623
+    },
+    {
+      "index": 14,
+      "beat": "2",
+      "speaker": "Emma",
+      "text": "Whoever's actually behind this shipment \u2014 it's not even the name on the paperwork.",
+      "start": 65.073,
+      "end": 69.114
+    },
+    {
+      "index": 15,
+      "beat": "2",
+      "speaker": "Rahul",
+      "text": "Right. A name-only check stops at the first name, looks fine, moves on. It never gets to hop two.",
+      "start": 69.564,
+      "end": 75.834
+    },
+    {
+      "index": 16,
+      "beat": "3",
+      "speaker": "Emma",
+      "text": "So does it just block it now?",
+      "start": 76.284,
+      "end": 78.002
+    },
+    {
+      "index": 17,
+      "beat": "3",
+      "speaker": "Rahul",
+      "text": "It doesn't decide on its own. It takes the chain, the hit, scores the shipment, and builds it all into one case file.",
+      "start": 78.452,
+      "end": 84.629
+    },
+    {
+      "index": 18,
+      "beat": "3",
+      "speaker": "Emma",
+      "text": "Somebody still has to look at it.",
+      "start": 85.079,
+      "end": 86.612
+    },
+    {
+      "index": 19,
+      "beat": "3",
+      "speaker": "Rahul",
+      "text": "Somebody still puts their name on the decision. They're just not spending half a day reconstructing what we just watched happen in seconds.",
+      "start": 87.062,
+      "end": 93.192
+    },
+    {
+      "index": 20,
+      "beat": "4",
+      "speaker": "Emma",
+      "text": "How do I trust that score? Or that flag?",
+      "start": 93.642,
+      "end": 96.104
+    },
+    {
+      "index": 21,
+      "beat": "4",
+      "speaker": "Rahul",
+      "text": "That's what this tab's for. Every rule that made that call is versioned. Every model's registered with a status. And if two signals disagree \u2014 which happens \u2014 a person looks at it. It doesn't get averaged out and forgotten.",
+      "start": 96.554,
+      "end": 108.768
+    },
+    {
+      "index": 22,
+      "beat": "4",
+      "speaker": "Emma",
+      "text": "So it's not just that you caught something.",
+      "start": 109.218,
+      "end": 111.03
+    },
+    {
+      "index": 23,
+      "beat": "4",
+      "speaker": "Rahul",
+      "text": "Somebody's putting their name on this call. If it's wrong, that can't be 'the system said so.' They need to point to exactly why, months later.",
+      "start": 111.48,
+      "end": 118.446
+    },
+    {
+      "index": 24,
+      "beat": "4",
+      "speaker": "Rahul",
+      "text": "And everything you just watched \u2014 the ingest, the chain, the score, this tab \u2014 it's all the same two interfaces underneath. REST API, MCP.",
+      "start": 119.846,
+      "end": 130.806
+    },
+    {
+      "index": 25,
+      "beat": "4",
+      "speaker": "Emma",
+      "text": "So next week it's a claim, a transaction\u2014",
+      "start": 131.256,
+      "end": 133.904
+    },
+    {
+      "index": 26,
+      "beat": "4",
+      "speaker": "Rahul",
+      "text": "Config change. That's kind of the whole point.",
+      "start": 134.354,
+      "end": 137.048
+    },
+    {
+      "index": 27,
+      "beat": "4",
+      "speaker": "Rahul",
+      "text": "That's UnmaskIQ, running on RiskModelForgeIQ's Decision Intelligence Layer. Demo link's in the comments.",
+      "start": 137.498,
+      "end": 144.093
+    }
+  ]
+}

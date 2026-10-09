@@ -1,0 +1,15 @@
+file '/home/rahulvadera/enterprise-ai-gtm-skill/examples/foundry/assets/beat1-repotree.png'
+duration 10.0
+file '/home/rahulvadera/enterprise-ai-gtm-skill/examples/foundry/assets/beat-healthcheck.png'
+duration 11.951
+file '/home/rahulvadera/enterprise-ai-gtm-skill/examples/foundry/assets/beat2-reframe.png'
+duration 13.551
+file '/home/rahulvadera/enterprise-ai-gtm-skill/examples/foundry/assets/beat3-contrast.png'
+duration 24.43
+file '/home/rahulvadera/enterprise-ai-gtm-skill/examples/foundry/assets/beat4-mechanism.png'
+duration 37.681
+file '/home/rahulvadera/enterprise-ai-gtm-skill/examples/foundry/assets/beat-healthcheck.png'
+duration 40.162
+file '/home/rahulvadera/enterprise-ai-gtm-skill/examples/foundry/assets/beat6-close.png'
+duration 16.151
+file '/home/rahulvadera/enterprise-ai-gtm-skill/examples/foundry/assets/beat6-close.png'
