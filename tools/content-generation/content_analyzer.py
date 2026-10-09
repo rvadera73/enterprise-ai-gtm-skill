@@ -8,19 +8,29 @@ Usage:
   python content_analyzer.py --input posts.txt --output messaging_profile.md
 
 Input format: Plain text with posts separated by '---'
+
+Uses the Qwen-first fallback chain (Qwen Singapore -> Qwen Virginia ->
+Gemini text) instead of a direct Anthropic API client. Previously this
+script called `Anthropic()` directly, paying per-token for a separate API
+rather than riding the existing Claude Code / Claude subscription. Since
+this script runs outside a Claude Code session, it can't use the
+subscription directly either - so per the same cost-avoidance policy it
+moves onto the Qwen-first chain. See tools/llm_common/qwen_fallback.py.
 """
 
-import json
+import os
+import sys
 import argparse
 from pathlib import Path
 from typing import Optional
-from anthropic import Anthropic
 
-# Initialize Anthropic client
-client = Anthropic()
+_TOOLS_DIR = os.path.normpath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, _TOOLS_DIR)
+from llm_common.qwen_fallback import chat_completion, LLMFallbackError
 
-def analyze_content_with_claude(content: str, analysis_type: str) -> str:
-    """Use Claude to analyze content for messaging patterns."""
+
+def analyze_content_with_llm(content: str, analysis_type: str) -> str:
+    """Use the Qwen-first fallback chain to analyze content for messaging patterns."""
 
     prompts = {
         "themes": """Analyze this content and identify the top 3-5 recurring THEMES (not topics, but underlying messages/narratives).
@@ -96,18 +106,8 @@ For each CTA:
     if analysis_type not in prompts:
         return f"Unknown analysis type: {analysis_type}"
 
-    response = client.messages.create(
-        model="claude-opus-4-8",
-        max_tokens=1000,
-        messages=[
-            {
-                "role": "user",
-                "content": f"{prompts[analysis_type]}\n\n---CONTENT TO ANALYZE---\n\n{content}"
-            }
-        ]
-    )
-
-    return response.content[0].text
+    full_prompt = f"{prompts[analysis_type]}\n\n---CONTENT TO ANALYZE---\n\n{content}"
+    return chat_completion(full_prompt, max_tokens=1000)
 
 
 def analyze_content_batch(content: str) -> dict:
@@ -122,13 +122,16 @@ def analyze_content_batch(content: str) -> dict:
         "cta": None
     }
 
-    print("🔍 Analyzing content...")
+    print("Analyzing content...")
     print("=" * 60)
 
     for analysis_type in analyses.keys():
-        print(f"\n📊 Analyzing: {analysis_type}...")
-        analyses[analysis_type] = analyze_content_with_claude(content, analysis_type)
-        print(f"✓ {analysis_type} complete")
+        print(f"\nAnalyzing: {analysis_type}...")
+        try:
+            analyses[analysis_type] = analyze_content_with_llm(content, analysis_type)
+        except LLMFallbackError as e:
+            analyses[analysis_type] = f"[Analysis failed on all 3 tiers: {e}]"
+        print(f"{analysis_type} complete")
 
     return analyses
 
@@ -221,9 +224,9 @@ Use this profile to:
 
 
 def interactive_mode():
-    """Interactive multi-turn analysis with Claude."""
+    """Interactive multi-turn analysis."""
 
-    print("\n🚀 Content Analyzer - Interactive Mode")
+    print("\nContent Analyzer - Interactive Mode")
     print("=" * 60)
     print("Paste your LinkedIn posts, articles, or content below.")
     print("Separate multiple posts with '---' on its own line.")
@@ -247,20 +250,20 @@ def interactive_mode():
         print("No content provided. Exiting.")
         return
 
-    print("\n✅ Content collected. Running analysis...\n")
+    print("\nContent collected. Running analysis...\n")
 
     analyses = analyze_content_batch(content)
     profile = generate_messaging_profile(analyses)
 
     print("\n" + "=" * 60)
-    print("📄 MESSAGING PROFILE GENERATED")
+    print("MESSAGING PROFILE GENERATED")
     print("=" * 60)
     print(profile)
 
     # Save to file
     output_path = Path("messaging_profile_generated.md")
     output_path.write_text(profile)
-    print(f"\n💾 Saved to: {output_path}")
+    print(f"\nSaved to: {output_path}")
 
 
 def file_mode(input_file: str, output_file: Optional[str] = None):
@@ -269,12 +272,12 @@ def file_mode(input_file: str, output_file: Optional[str] = None):
     input_path = Path(input_file)
 
     if not input_path.exists():
-        print(f"❌ File not found: {input_file}")
+        print(f"File not found: {input_file}")
         return
 
     content = input_path.read_text()
-    print(f"📖 Loaded content from: {input_file}")
-    print(f"📏 Content size: {len(content)} characters\n")
+    print(f"Loaded content from: {input_file}")
+    print(f"Content size: {len(content)} characters\n")
 
     analyses = analyze_content_batch(content)
     profile = generate_messaging_profile(analyses)
@@ -286,9 +289,9 @@ def file_mode(input_file: str, output_file: Optional[str] = None):
     output_path.write_text(profile)
 
     print("\n" + "=" * 60)
-    print("✅ ANALYSIS COMPLETE")
+    print("ANALYSIS COMPLETE")
     print("=" * 60)
-    print(f"📄 Profile saved to: {output_path}\n")
+    print(f"Profile saved to: {output_path}\n")
     print(profile[:500] + "...\n[Profile truncated for display]")
 
 
