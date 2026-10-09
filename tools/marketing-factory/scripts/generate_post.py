@@ -1,14 +1,29 @@
 #!/usr/bin/env python3
 """
-Generate LinkedIn post from topic using Claude API.
+Generate LinkedIn post from topic via the Qwen-first fallback chain:
+  1. Qwen Singapore (qwen3.8-max) - primary
+  2. Qwen Virginia   (qwen3.8-max) - fallback
+  3. Gemini          (gemini-2.5-flash, text) - third-tier fallback
+
 Input: topic string
 Output: LinkedIn post (400 words, brand voice)
+
+Replaces a previous version that called the Anthropic API directly
+(anthropic.Anthropic(api_key=...)), paying per-token for a separate API
+rather than riding the existing Claude Code / Claude subscription. Since this
+script runs outside a Claude Code session, it can't use the subscription
+directly either - so per the same cost-avoidance policy, it moves onto the
+Qwen-first chain instead of direct-Anthropic. See
+tools/llm_common/qwen_fallback.py for the shared implementation.
 """
 
 import os
 import sys
-import json
-import anthropic
+
+_TOOLS_DIR = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", ".."))
+sys.path.insert(0, _TOOLS_DIR)
+from llm_common.qwen_fallback import chat_completion, LLMFallbackError
+
 
 def load_brand_guidelines():
     """Load brand voice guidelines."""
@@ -20,10 +35,10 @@ def load_brand_guidelines():
         "hashtags": ["EnterpriseAI", "SoftwareModernization", "TechnicalDebt", "AIServices", "AgenticAI", "FederalTech", "DigitalTransformation"],
     }
 
+
 def generate_linkedin_post(topic: str) -> str:
     """Generate LinkedIn post from topic."""
 
-    client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
     brand = load_brand_guidelines()
 
     prompt = f"""You are writing a LinkedIn post for a solution architect discussing enterprise AI and modernization.
@@ -51,15 +66,8 @@ WRITE A LINKEDIN POST NOW:
 - DO NOT use markdown formatting, keep it as plain text with line breaks
 - Total: 300-400 words"""
 
-    message = client.messages.create(
-        model="claude-opus-4-8",
-        max_tokens=1024,
-        messages=[
-            {"role": "user", "content": prompt}
-        ]
-    )
+    return chat_completion(prompt, max_tokens=1024, temperature=0.7)
 
-    return message.content[0].text
 
 def main():
     if len(sys.argv) < 2:
@@ -71,7 +79,12 @@ def main():
     print(f"Generating LinkedIn post for topic: {topic}\n")
     print("=" * 80)
 
-    post = generate_linkedin_post(topic)
+    try:
+        post = generate_linkedin_post(topic)
+    except LLMFallbackError as e:
+        print(f"Generation failed on all 3 tiers:\n{e}")
+        sys.exit(1)
+
     print(post)
     print("=" * 80)
 
@@ -80,6 +93,7 @@ def main():
     with open(output_file, "w") as f:
         f.write(post)
     print(f"\nPost saved to: {output_file}")
+
 
 if __name__ == "__main__":
     main()
