@@ -28,6 +28,10 @@ temp/
 Thumbs.db
 .DS_Store
 
+# Python
+__pycache__/
+*.pyc
+
 # Video studio / demo recorder build artefacts (added 2026-07)
 .venv/
 out/

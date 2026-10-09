@@ -10,9 +10,14 @@
 
 ### Prerequisites
 ```bash
-pip install anthropic
-export ANTHROPIC_API_KEY=sk-...
+pip install requests
 ```
+No API key setup needed on this machine: the script reads `QWEN_API_KEY` /
+`QWEN_BASE_URL` (+ Virginia backup + `GEMINI_API_KEY`) from
+`~/personal-assistant/.env` automatically via the shared
+`tools/llm_common/qwen_fallback.py` helper (Qwen Singapore -> Qwen Virginia ->
+Gemini, in order). To run this on a different machine, set those same env
+vars directly instead.
 
 ### Files Included
 - `content_analyzer.py` — Main analysis tool
@@ -251,10 +256,10 @@ messaging_profile_generated.md (or messaging_profile.md)
 
 ## Troubleshooting
 
-### "API key not found"
-```bash
-export ANTHROPIC_API_KEY=sk-your-key-here
-```
+### "All 3 tiers failed"
+Check that `~/personal-assistant/.env` has `QWEN_API_KEY` / `QWEN_BASE_URL`
+set (or set them, plus the Virginia backup and `GEMINI_API_KEY`, as env vars
+directly if running on a different machine).
 
 ### "No content provided"
 Make sure you're pasting actual post text, not just links. Include full content.
