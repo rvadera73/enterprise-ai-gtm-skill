@@ -1,40 +1,72 @@
 #!/usr/bin/env python3
 """
-Shared 3-tier LLM fallback chain for enterprise-ai-gtm tooling:
+Shared LLM fallback for enterprise-ai-gtm tooling's TEXT path:
 
-    1. Qwen Singapore   (subscription / Token Plan)  - primary
-    2. Qwen Virginia     (pay-as-you-go)              - fallback
-    3. Gemini            (text or image)              - third-tier fallback
+    Gateway-first (preferred, when configured):
+        A single call to the shared local LLM gateway (~/llm-gateway,
+        9Router, a Docker container on http://localhost:20128/v1) via its
+        standard OpenAI-compatible `/v1/chat/completions` endpoint, using the
+        "personal-assistant-chain" combo. The gateway already runs the full
+        Qwen-Singapore -> Qwen-Virginia -> Gemini fallback internally (plus
+        centralized usage logging), so this module does NOT re-run its own
+        3-tier chain on top of it — that would just retry a chain the
+        gateway itself already exhausted. A gateway failure is raised
+        immediately as LLMFallbackError.
 
-Rationale: this skill's scripts previously called the Anthropic API directly
-with a separate paid key (ANTHROPIC_API_KEY), which duplicates the existing
-Claude Code / Claude subscription spend. Per established policy (see
-personal-assistant's architecture docs), reasoning tasks should ride the
-existing subscription path rather than pay per-token for a second API. Since
-these scripts run outside a Claude Code session (plain Python, invoked
-directly), they can't use the Claude subscription itself — so they're moved
-onto the Qwen-first chain instead of direct-Anthropic, which is the other
-piece of the same policy: don't pay a second vendor per-token when a
-cheaper/already-paid-for path exists.
+    Local 3-tier chain (used only when the gateway is NOT configured):
+        1. Qwen Singapore   (subscription / Token Plan)  - primary
+        2. Qwen Virginia     (pay-as-you-go)              - fallback
+        3. Gemini            (text)                       - third-tier fallback
+
+        This is the original chain and is preserved byte-for-byte for any
+        environment where the gateway vars aren't all set (e.g. a different
+        machine, or before the gateway existed). The sibling personal-
+        assistant repo made the equivalent migration first (PR #160) and
+        established the "inert unless configured, old behavior unchanged
+        otherwise" pattern this file follows (see its ADR 0047/0051).
+
+    generate_image() (below) is explicitly OUT of scope for this gateway
+    migration and still uses the original 3-tier wan2.7-image-pro/Gemini
+    chain directly — DashScope's native async image-task format doesn't
+    cleanly map onto the gateway's chat-completions contract without
+    separate verification that hasn't been done yet.
+
+Rationale (original 3-tier chain, still the fallback path above): this
+skill's scripts previously called the Anthropic API directly with a separate
+paid key (ANTHROPIC_API_KEY), which duplicates the existing Claude Code /
+Claude subscription spend. Per established policy (see personal-assistant's
+architecture docs), reasoning tasks should ride the existing subscription
+path rather than pay per-token for a second API. Since these scripts run
+outside a Claude Code session (plain Python, invoked directly), they can't
+use the Claude subscription itself — so they're moved onto the Qwen-first
+chain instead of direct-Anthropic, which is the other piece of the same
+policy: don't pay a second vendor per-token when a cheaper/already-paid-for
+path exists.
 
 Credentials:
     Reads QWEN_API_KEY, QWEN_BASE_URL, QWEN_API_KEY_VIRGINIA_BACKUP,
-    QWEN_BASE_URL_VIRGINIA_BACKUP, QWEN_MODEL, GEMINI_API_KEY from the
-    process environment first. If any are missing there, falls back to
-    reading them from ~/personal-assistant/.env directly (same user/same
-    machine, already the canonical home for these creds — see
-    ~/.claude/CLAUDE.md "Reusable pattern" note and
-    ~/.claude/projects/.../memory/MEMORY.md). This means these scripts need
-    no separate credential setup of their own; they ride on the credentials
-    already configured for personal-assistant. If that's ever undesirable
-    (e.g. this skill is used on a different machine), set the six env vars
-    directly before running and the .env fallback is simply never consulted.
+    QWEN_BASE_URL_VIRGINIA_BACKUP, QWEN_MODEL, GEMINI_API_KEY, and now also
+    LLM_GATEWAY_URL, LLM_GATEWAY_API_KEY, LLM_GATEWAY_COMBO from the process
+    environment first. If any are missing there, falls back to reading them
+    from ~/personal-assistant/.env directly (same user/same machine, already
+    the canonical home for these creds — see ~/.claude/CLAUDE.md "Reusable
+    pattern" note and ~/.claude/projects/.../memory/MEMORY.md — and now also
+    where the three LLM_GATEWAY_* vars were added for this migration). This
+    means these scripts need no separate credential setup of their own; they
+    ride on the credentials already configured for personal-assistant. If
+    that's ever undesirable (e.g. this skill is used on a different
+    machine), set the relevant env vars directly before running and the
+    .env fallback is simply never consulted.
 
 Failure-vs-fallback policy:
     Only fall back to the next tier on a REAL failure: connection error,
     timeout, non-2xx HTTP status, or (for image tasks) an explicit
     task_status of FAILED/CANCELED/UNKNOWN. A merely terse or unsatisfying
     response from a working tier is NOT a failure and is returned as-is.
+    This still governs tiering *within* the local 3-tier chain. It does NOT
+    mean a gateway failure falls through to the local chain — see
+    "Gateway-first" above, gateway and local chain are mutually exclusive
+    per call, never stacked.
 """
 
 import json
@@ -55,6 +87,9 @@ _ENV_KEYS = [
     "QWEN_BASE_URL_VIRGINIA_BACKUP",
     "QWEN_MODEL",
     "GEMINI_API_KEY",
+    "LLM_GATEWAY_URL",
+    "LLM_GATEWAY_API_KEY",
+    "LLM_GATEWAY_COMBO",
 ]
 
 
@@ -144,14 +179,37 @@ def _gemini_text_completion(api_key: str, prompt: str, max_tokens: int,
 def chat_completion(prompt: str, max_tokens: int = 1024,
                      temperature: float = 0.7,
                      system: Optional[str] = None) -> str:
-    """Run `prompt` through Qwen-SG -> Qwen-VA -> Gemini-text, in order.
-    Returns the first successful response. Raises LLMFallbackError only if
-    all three tiers genuinely fail."""
+    """Gateway-first text completion, falling back to the original local
+    3-tier chain only when the gateway isn't configured.
+
+    If LLM_GATEWAY_URL, LLM_GATEWAY_API_KEY, and LLM_GATEWAY_COMBO are ALL
+    present, makes a single call to the gateway's `/chat/completions` (which
+    already runs Qwen-SG -> Qwen-VA -> Gemini internally) and returns its
+    response, or raises LLMFallbackError immediately on failure — it does
+    NOT retry locally, since the gateway already exhausted its own tiers.
+
+    Otherwise, runs the original local chain: Qwen-SG -> Qwen-VA -> Gemini-
+    text, in order, returning the first successful response and raising
+    LLMFallbackError only if all three tiers genuinely fail. This preserves
+    the exact pre-gateway behavior for any environment without the gateway
+    vars set."""
     creds = load_credentials()
     messages = []
     if system:
         messages.append({"role": "system", "content": system})
     messages.append({"role": "user", "content": prompt})
+
+    # Gateway-first: the gateway owns the full fallback chain itself, so a
+    # single call replaces the local 3-tier branching below entirely.
+    if (creds.get("LLM_GATEWAY_URL") and creds.get("LLM_GATEWAY_API_KEY")
+            and creds.get("LLM_GATEWAY_COMBO")):
+        try:
+            return _qwen_chat_completion(
+                creds["LLM_GATEWAY_URL"], creds["LLM_GATEWAY_API_KEY"],
+                creds["LLM_GATEWAY_COMBO"], messages, max_tokens, temperature,
+            )
+        except Exception as e:
+            raise LLMFallbackError(f"LLM gateway call failed: {e}") from e
 
     errors = []
 
